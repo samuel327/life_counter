@@ -3,10 +3,10 @@ export const AppColors = {
   secondary: '',
 
   //one color
-  mono_white: '',
-  mono_blue: '',
-  mono_green: '',
-  mono_black: '',
+  mono_white: '#ffffff',
+  mono_blue: '#0000cc',
+  mono_green: '#00661a',
+  mono_black: '#000000',
 
   //two colors
   azorius: '', //white + blue

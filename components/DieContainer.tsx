@@ -1,5 +1,5 @@
+import { Button, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button } from 'react-native';
 
 export const DieContainer = () => {
   const [dieState, setDieState] = useState<number>(20);
@@ -28,5 +28,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 120,
+    color: 'white',
   },
 });

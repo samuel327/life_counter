@@ -1,7 +1,8 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useEffect, useState } from 'react';
 import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import React, { useEffect, useState } from 'react';
+
 import { DieContainer } from './components/DieContainer';
+import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from './components/StatusContainer';
 
 export default function App() {
@@ -10,25 +11,23 @@ export default function App() {
   useEffect(() => {}, [numberOfPlayers]);
 
   function displayStatusContainers() {
-    return numberOfPlayers.map((player: number) => {
-      return <StatusContainer playerNumber={player} />;
+    return numberOfPlayers.map((player: number, index: number) => {
+      return <StatusContainer playerNumber={player} key={index} />;
     });
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}></View>
-      <StatusBar style='auto' />
-      {displayStatusContainers()}
+      <StatusBar style="auto" />
       <View style={styles.btns}>
         <Button
           title={'-'}
+          disabled={numberOfPlayers.length === 0 ? true : false}
           onPress={() => {
             console.log('MINUS A CONTAINER');
             setNumberOfPlayers((prev: number[]) => {
               let cpy = [...prev];
-              console.log('CPY: ', cpy);
-              let lastEl = cpy[prev.length - 1] || 0;
               cpy.pop();
               return cpy;
             });
@@ -36,8 +35,9 @@ export default function App() {
         />
         <Button
           title={'+'}
+          disabled={numberOfPlayers.length + 1 <= 4 ? false : true}
           onPress={() => {
-            console.log('ADDING CONTAINER');
+            console.log('ADDING CONTAINER', numberOfPlayers.length);
             setNumberOfPlayers((prev: number[]) => {
               let cpy = [...prev];
               console.log('CPY: ', cpy);
@@ -47,6 +47,8 @@ export default function App() {
           }}
         />
       </View>
+      <View style={styles.statusView}>{displayStatusContainers()}</View>
+
       <View style={styles.dieContainer}>
         <DieContainer />
       </View>
@@ -59,14 +61,17 @@ const styles = StyleSheet.create({
   header: {
     height: 100,
   },
+  statusView: {
+    height: 500,
+  },
   btns: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
   dieContainer: {
-    flex: 1,
-
+    backgroundColor: 'black',
+    color: 'white',
     justifyContent: 'flex-end',
   },
 });
