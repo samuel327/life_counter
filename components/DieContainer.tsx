@@ -1,5 +1,7 @@
-import { Button, StyleSheet, Text, View } from 'react-native';
+import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
+
+import { Foundation } from '@expo/vector-icons';
 
 export const DieContainer = () => {
   const [dieState, setDieState] = useState<number>(20);
@@ -12,14 +14,15 @@ export const DieContainer = () => {
   }
 
   return (
-    <View>
+    <View style={{ alignItems: 'center' }}>
       <Text style={styles.text}>{dieState}</Text>
-      <Button
-        title={'ROLL'}
+      <Pressable
         onPress={() => {
           handleRoll();
         }}
-      />
+      >
+        <Foundation name="die-four" size={40} color="white" />
+      </Pressable>
     </View>
   );
 };
