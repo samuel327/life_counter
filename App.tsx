@@ -25,6 +25,13 @@ export default function App() {
           title={'-'}
           onPress={() => {
             console.log('MINUS A CONTAINER');
+            setNumberOfPlayers((prev: number[]) => {
+              let cpy = [...prev];
+              console.log('CPY: ', cpy);
+              let lastEl = cpy[prev.length - 1] || 0;
+              cpy.pop();
+              return cpy;
+            });
           }}
         />
         <Button
