@@ -1,10 +1,13 @@
+import * as _ from 'lodash';
+
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
 import { AppColors } from '../constants/AppColors';
+import { CustomButton } from './CustomButton';
 import { Ionicons } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
-import * as _ from 'lodash';
+
 interface StatusContainerProps {
   playerNumber: number;
   health: number;
@@ -52,7 +55,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
             console.log('Pressed!');
           }}
         >
-          <Ionicons name='settings' size={20} color='black' />
+          <Ionicons name="settings" size={20} color="grey" />
         </TouchableOpacity>
       </View>
       <View
@@ -62,11 +65,22 @@ export const StatusContainer = (props: StatusContainerProps) => {
           alignItems: 'center',
         }}
       >
-        <Button title={'-1'} onPress={() => updateLifeTotal(-1)} />
-        <Button title={'-5'} onPress={() => updateLifeTotal(-5)} />
+        <CustomButton onPress={() => updateLifeTotal(-1)} color="red">
+          -1
+        </CustomButton>
+
+        <CustomButton onPress={() => updateLifeTotal(-1)} color="red">
+          -5
+        </CustomButton>
         <Text style={getLifeTotalStyles()}>{health}</Text>
-        <Button title={'+1'} onPress={() => updateLifeTotal(1)} />
-        <Button title={'+5'} onPress={() => updateLifeTotal(5)} />
+
+        <CustomButton onPress={() => updateLifeTotal(-1)} color="black">
+          +1
+        </CustomButton>
+
+        <CustomButton onPress={() => updateLifeTotal(-1)} color="black">
+          +5
+        </CustomButton>
       </View>
     </View>
   );
