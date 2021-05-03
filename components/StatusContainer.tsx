@@ -1,4 +1,4 @@
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
 import { AppColors } from '../constants/AppColors';
@@ -11,12 +11,6 @@ export const StatusContainer = (props: StatusContainerProps) => {
   const { playerNumber } = props;
 
   const [lifeStatus, setLifeStatus] = useState<number>(40);
-
-  function minusOne() {
-    setLifeStatus((prev: number) => {
-      return prev - 1;
-    });
-  }
 
   function updateLifeTotal(by: number) {
     setLifeStatus((prev: number) => {
@@ -35,25 +29,15 @@ export const StatusContainer = (props: StatusContainerProps) => {
     return baseStyle;
   }
   return (
-    <View style={{ height: 100, backgroundColor: 'silver', margin: 5 }}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          margin: 8,
-        }}
-      >
-        <Pressable>
-          <Ionicons
-            name='settings'
-            size={20}
-            color='black'
-            onPress={() => {
-              console.log('Pressed!');
-            }}
-          />
-        </Pressable>
+    <View style={styles.container}>
+      <View style={styles.topRow}>
+        <TouchableOpacity
+          onPress={() => {
+            console.log('Pressed!');
+          }}
+        >
+          <Ionicons name='settings' size={20} color='black' />
+        </TouchableOpacity>
         <View>
           <Text>{playerNumber}</Text>
         </View>
@@ -76,6 +60,13 @@ export const StatusContainer = (props: StatusContainerProps) => {
 };
 
 const styles = StyleSheet.create({
+  container: { height: 100, backgroundColor: 'silver', margin: 5 },
+  topRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    margin: 8,
+  },
   content: {
     flexDirection: 'row',
     justifyContent: 'center',
