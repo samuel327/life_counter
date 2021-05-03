@@ -13,25 +13,22 @@ interface StatusContainerProps {
 export const StatusContainer = (props: StatusContainerProps) => {
   const { playerNumber, health, setPlayers } = props;
 
-  //  const [lifeStatus, setLifeStatus] = useState<number>(health);
-
   function updateLifeTotal(by: number) {
     setPlayers((prev: Player[]) => {
-      console.log('UPDATE: ', playerNumber, by);
       let cpy = [...prev];
       cpy[playerNumber - 1].health = health + by;
-      // cpy[playerNumber].health = health + by;
+
       return cpy;
     });
   }
 
   function getLifeTotalStyles() {
     let baseStyle = styles.lifeTotal;
-    // if (lifeStatus <= 10) {
-    //   baseStyle = { ...baseStyle, ...{ color: AppColors.danger } };
-    // } else {
-    //   baseStyle = { ...baseStyle, ...{ color: AppColors.healthy } };
-    // }
+    if (health <= 10) {
+      baseStyle = { ...baseStyle, ...{ color: AppColors.danger } };
+    } else {
+      baseStyle = { ...baseStyle, ...{ color: AppColors.healthy } };
+    }
 
     return baseStyle;
   }

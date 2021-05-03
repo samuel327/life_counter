@@ -55,6 +55,13 @@ export default function ActivePlayersScreen() {
           return player;
         }
       });
+      cpy = cpy.map((player: Player, index: number) => {
+        let updatedPlayer: Player = {
+          player: index + 1,
+          health: player.health,
+        };
+        return updatedPlayer;
+      });
       return cpy;
     });
   }
