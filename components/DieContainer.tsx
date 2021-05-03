@@ -93,18 +93,17 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   dieStyles: {
-    //flex: 1,
     width: 200,
     height: 200,
     borderColor: 'white',
     borderWidth: 5,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
 
   text: {
     fontSize: 120,
-    color: 'white',
   },
   dieButton: { alignItems: 'center' },
 });
