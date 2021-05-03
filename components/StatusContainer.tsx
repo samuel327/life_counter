@@ -4,14 +4,15 @@ import React, { useState } from 'react';
 import { AppColors } from '../constants/AppColors';
 import { Ionicons } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
-
+import * as _ from 'lodash';
 interface StatusContainerProps {
   playerNumber: number;
   health: number;
   setPlayers: Function;
+  sort: Function;
 }
 export const StatusContainer = (props: StatusContainerProps) => {
-  const { playerNumber, health, setPlayers } = props;
+  const { playerNumber, health, setPlayers, sort } = props;
 
   function updateLifeTotal(by: number) {
     setPlayers((prev: Player[]) => {
@@ -23,8 +24,10 @@ export const StatusContainer = (props: StatusContainerProps) => {
         }
         return player;
       });
-
       return cpy;
+      // let sorted = _.sortBy(cpy, (o: Player) => o.health).reverse();
+
+      // return sorted;
     });
   }
 

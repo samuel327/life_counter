@@ -10,13 +10,20 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
 import { Ionicons } from '@expo/vector-icons';
-
+import * as _ from 'lodash';
 export interface Player {
   player: number;
   health: number;
 }
 export default function ActivePlayersScreen() {
   const [players, setPlayers] = useState<Player[]>([]);
+
+  function sort() {
+    setPlayers((prev: Player[]) => {
+      let sorted = _.sortBy(prev, (o: Player) => o.health).reverse();
+      return sorted;
+    });
+  }
 
   function displayStatusContainers() {
     return players.map((player: Player, index: number) => {
@@ -26,6 +33,7 @@ export default function ActivePlayersScreen() {
             playerNumber={player?.player}
             health={player?.health}
             setPlayers={setPlayers}
+            sort={sort}
           />
         </TouchableOpacity>
       );
@@ -67,6 +75,7 @@ export default function ActivePlayersScreen() {
       <View style={styles.header}></View>
       <StatusBar style='auto' />
       <View style={styles.btns}>
+        <Button title='Sort' onPress={() => sort()} />
         <TouchableOpacity onPress={addPlayer}>
           <Ionicons name='add' size={24} color='black' />
         </TouchableOpacity>
