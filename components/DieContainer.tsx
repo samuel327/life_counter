@@ -1,10 +1,19 @@
-import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
-import React, { useState } from 'react';
+import {
+  Button,
+  Pressable,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, { useRef, useState } from 'react';
 
 import { Foundation } from '@expo/vector-icons';
 
 export const DieContainer = () => {
   const [dieState, setDieState] = useState<number>(20);
+  const [isRolling, setIsRolling] = useState<boolean>(false);
+  let roll = useRef<any>(null);
 
   function handleRoll() {
     setDieState(() => {
@@ -13,16 +22,32 @@ export const DieContainer = () => {
     });
   }
 
+  function startRolling() {
+    roll.current = setInterval(function () {
+      handleRoll();
+    }, 50);
+  }
+
   return (
     <View style={{ alignItems: 'center' }}>
       <Text style={styles.text}>{dieState}</Text>
-      <Pressable
+      <TouchableOpacity
+        disabled={isRolling ? true : false}
         onPress={() => {
-          handleRoll();
+          setIsRolling(true);
+          startRolling();
+          setTimeout(function () {
+            clearInterval(roll.current);
+            setIsRolling(false);
+          }, 500);
         }}
       >
-        <Foundation name="die-four" size={40} color="white" />
-      </Pressable>
+        <Foundation
+          name='die-four'
+          size={40}
+          color={isRolling ? 'grey' : 'white'}
+        />
+      </TouchableOpacity>
     </View>
   );
 };
