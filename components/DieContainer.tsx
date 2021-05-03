@@ -30,12 +30,12 @@ export const DieContainer = () => {
 
   return (
     <View style={styles.content}>
-      <View style={styles.textView}>
-        <View style={styles.textInnerView}>
+      <View style={styles.diceView}>
+        <View style={styles.dieStyles}>
           <Text style={styles.text}>{dieState}</Text>
         </View>
       </View>
-      <View style={styles.diceView}>
+      <View style={styles.dieButton}>
         <TouchableOpacity
           disabled={isRolling ? true : false}
           onPress={() => {
@@ -61,35 +61,28 @@ export const DieContainer = () => {
 const styles = StyleSheet.create({
   content: {
     flex: 1,
-  },
-  textView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  textInnerView: {
-    //flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: 200,
-    height: 200,
-    borderWidth: 5,
-    borderColor: 'white',
-    backgroundColor: 'white',
-  },
-  text: {
-    fontSize: 120,
-    //color: 'white',
-
-    // height: 300,
-    // width: 300,
-    // backgroundColor: 'blue',
-    // textAlign: 'center',
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    backgroundColor: 'black',
+    justifyContent: 'space-between',
   },
   diceView: {
+    flex: 1,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  dieStyles: {
+    //flex: 1,
+    width: 200,
+    height: 200,
+    borderColor: 'white',
+    borderWidth: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
+
+  text: {
+    fontSize: 120,
+    color: 'blue',
+  },
+  dieButton: { alignItems: 'center' },
 });

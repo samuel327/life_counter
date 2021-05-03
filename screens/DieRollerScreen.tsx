@@ -4,16 +4,11 @@ import { DieContainer } from '../components/DieContainer';
 export const DieRollerScreen = () => {
   return (
     <View style={styles.content}>
-      <View style={styles.dieContainer}>
-        <DieContainer />
-      </View>
+      <DieContainer />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  content: { flex: 1, backgroundColor: 'black', alignItems: 'center' },
-  dieContainer: {
-    flex: 1,
-  },
+  content: { flex: 1 },
 });
