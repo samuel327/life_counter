@@ -1,15 +1,12 @@
 import {
   Button,
-  Pressable,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { Component, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
-import { DieContainer } from '../components/DieContainer';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
 import { Ionicons } from '@expo/vector-icons';

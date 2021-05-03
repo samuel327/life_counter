@@ -16,7 +16,13 @@ export const StatusContainer = (props: StatusContainerProps) => {
   function updateLifeTotal(by: number) {
     setPlayers((prev: Player[]) => {
       let cpy = [...prev];
-      cpy[playerNumber - 1].health = health + by;
+      //cpy[playerNumber - 1].health = health + by;
+      cpy = cpy.map((player: Player, index: number) => {
+        if (player.player === playerNumber) {
+          player.health = health + by;
+        }
+        return player;
+      });
 
       return cpy;
     });
