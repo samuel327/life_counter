@@ -104,7 +104,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 120,
-    color: 'blue',
+    color: 'white',
   },
   dieButton: { alignItems: 'center' },
 });
