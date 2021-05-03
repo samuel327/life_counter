@@ -29,22 +29,13 @@ export const DieContainer = () => {
   }
 
   return (
-    <View
-      style={{
-        height: '100%',
-
-        justifyContent: 'flex-end',
-      }}
-    >
-      <View style={{ height: '50%' }}>
-        <Text style={styles.text}>{dieState}</Text>
+    <View style={styles.content}>
+      <View style={styles.textView}>
+        <View style={styles.textInnerView}>
+          <Text style={styles.text}>{dieState}</Text>
+        </View>
       </View>
-      <View
-        style={{
-          justifyContent: 'flex-end',
-          alignItems: 'center',
-        }}
-      >
+      <View style={styles.diceView}>
         <TouchableOpacity
           disabled={isRolling ? true : false}
           onPress={() => {
@@ -58,7 +49,7 @@ export const DieContainer = () => {
         >
           <Foundation
             name='die-four'
-            size={40}
+            size={80}
             color={isRolling ? 'grey' : 'white'}
           />
         </TouchableOpacity>
@@ -68,9 +59,37 @@ export const DieContainer = () => {
 };
 
 const styles = StyleSheet.create({
+  content: {
+    flex: 1,
+  },
+  textView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textInnerView: {
+    //flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: 200,
+    height: 200,
+    borderWidth: 5,
+    borderColor: 'white',
+    backgroundColor: 'white',
+  },
   text: {
-    // textAlign: 'center',
     fontSize: 120,
-    color: 'white',
+    //color: 'white',
+
+    // height: 300,
+    // width: 300,
+    // backgroundColor: 'blue',
+    // textAlign: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
+  diceView: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
