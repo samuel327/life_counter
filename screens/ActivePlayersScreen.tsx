@@ -7,41 +7,54 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 
 import { DieContainer } from '../components/DieContainer';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
 import { Ionicons } from '@expo/vector-icons';
-export default function ActivePlayersScreen() {
-  const [numberOfPlayers, setNumberOfPlayers] = useState<number[]>([]);
 
-  useEffect(() => {}, [numberOfPlayers]);
+export interface Player {
+  player: number;
+  health: number;
+}
+export default function ActivePlayersScreen() {
+  const [players, setPlayers] = useState<Player[]>([]);
 
   function displayStatusContainers() {
-    return numberOfPlayers.map((player: number, index: number) => {
+    return players.map((player: Player, index: number) => {
       return (
-        <TouchableOpacity onLongPress={removePlayer} key={index}>
-          <StatusContainer playerNumber={player} />
+        <TouchableOpacity onLongPress={() => removePlayer(player)} key={index}>
+          <StatusContainer
+            playerNumber={player?.player}
+            health={player?.health}
+            setPlayers={setPlayers}
+          />
         </TouchableOpacity>
       );
     });
   }
 
   function addPlayer() {
-    if (numberOfPlayers.length + 1 <= 4) {
-      setNumberOfPlayers((prev: number[]) => {
-        let cpy = [...prev];
-        let lastEl = cpy[prev.length - 1] || 0;
-        return cpy.concat(lastEl + 1);
+    if (players.length + 1 <= 4) {
+      setPlayers((prev: any[]) => {
+        return prev.concat({
+          player: prev.length + 1,
+          health: 40,
+        });
       });
     }
   }
 
-  function removePlayer() {
-    setNumberOfPlayers((prev: number[]) => {
+  function removePlayer(playerToDelete: Player) {
+    console.log('REMOVE PLAYER: ', playerToDelete.player, playerToDelete);
+    setPlayers((prev: any[]) => {
       let cpy = [...prev];
-      cpy.pop();
+      cpy = cpy.filter((player: Player, index: number) => {
+        if (player.player !== playerToDelete.player) {
+          return player;
+        }
+      });
       return cpy;
     });
   }

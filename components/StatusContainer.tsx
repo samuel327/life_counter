@@ -3,28 +3,35 @@ import React, { useState } from 'react';
 
 import { AppColors } from '../constants/AppColors';
 import { Ionicons } from '@expo/vector-icons';
+import { Player } from '../screens/ActivePlayersScreen';
 
 interface StatusContainerProps {
   playerNumber: number;
+  health: number;
+  setPlayers: Function;
 }
 export const StatusContainer = (props: StatusContainerProps) => {
-  const { playerNumber } = props;
+  const { playerNumber, health, setPlayers } = props;
 
-  const [lifeStatus, setLifeStatus] = useState<number>(40);
+  //  const [lifeStatus, setLifeStatus] = useState<number>(health);
 
   function updateLifeTotal(by: number) {
-    setLifeStatus((prev: number) => {
-      return prev + by;
+    setPlayers((prev: Player[]) => {
+      console.log('UPDATE: ', playerNumber, by);
+      let cpy = [...prev];
+      cpy[playerNumber - 1].health = health + by;
+      // cpy[playerNumber].health = health + by;
+      return cpy;
     });
   }
 
   function getLifeTotalStyles() {
     let baseStyle = styles.lifeTotal;
-    if (lifeStatus <= 10) {
-      baseStyle = { ...baseStyle, ...{ color: AppColors.danger } };
-    } else {
-      baseStyle = { ...baseStyle, ...{ color: AppColors.healthy } };
-    }
+    // if (lifeStatus <= 10) {
+    //   baseStyle = { ...baseStyle, ...{ color: AppColors.danger } };
+    // } else {
+    //   baseStyle = { ...baseStyle, ...{ color: AppColors.healthy } };
+    // }
 
     return baseStyle;
   }
@@ -51,7 +58,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
       >
         <Button title={'-1'} onPress={() => updateLifeTotal(-1)} />
         <Button title={'-5'} onPress={() => updateLifeTotal(-5)} />
-        <Text style={getLifeTotalStyles()}>{lifeStatus}</Text>
+        <Text style={getLifeTotalStyles()}>{health}</Text>
         <Button title={'+1'} onPress={() => updateLifeTotal(1)} />
         <Button title={'+5'} onPress={() => updateLifeTotal(5)} />
       </View>
