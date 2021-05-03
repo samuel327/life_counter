@@ -16,7 +16,12 @@ export interface Player {
   health: number;
 }
 export default function ActivePlayersScreen() {
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<Player[]>([
+    { player: 1, health: 40 },
+    { player: 2, health: 40 },
+    { player: 3, health: 40 },
+    { player: 4, health: 40 },
+  ]);
 
   function sort() {
     setPlayers((prev: Player[]) => {

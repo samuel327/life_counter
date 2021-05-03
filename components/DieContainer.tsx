@@ -7,18 +7,19 @@ import {
   Easing,
 } from 'react-native';
 import React, { useRef, useState } from 'react';
-
+import { Picker } from '@react-native-picker/picker';
 import { Foundation } from '@expo/vector-icons';
 
 export const DieContainer = () => {
   const [dieState, setDieState] = useState<number>(20);
   const [isRolling, setIsRolling] = useState<boolean>(false);
   const [spinValue, setSpinValue] = useState(new Animated.Value(0));
+  const [selectedDie, setSelectedDie] = useState(20);
   let roll = useRef<any>(null);
 
   function handleRoll() {
     setDieState(() => {
-      let num = Math.floor(Math.random() * 20 + 1);
+      let num = Math.floor(Math.random() * selectedDie + 1);
       return num;
     });
   }
@@ -50,6 +51,17 @@ export const DieContainer = () => {
   return (
     <View style={styles.content}>
       <View style={styles.diceView}>
+        <Picker
+          itemStyle={{ color: 'gold' }}
+          selectedValue={selectedDie}
+          onValueChange={(itemValue, itemIndex) => setSelectedDie(itemValue)}
+          style={{ width: 300, color: 'gold' }}
+        >
+          <Picker.Item label='Icosahedron' value={20} />
+          <Picker.Item label='Octahedron' value={8} />
+          <Picker.Item label='Cube' value={6} />
+          <Picker.Item label='Tetrahedron' value={4} />
+        </Picker>
         <Animated.View
           style={{ ...styles.dieStyles, ...{ transform: [{ rotate: spin }] } }}
         ></Animated.View>
