@@ -93,7 +93,7 @@ export default function ActivePlayersScreen() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   header: {
-    height: 20,
+    height: 100,
   },
   statusView: {
     height: 500,
