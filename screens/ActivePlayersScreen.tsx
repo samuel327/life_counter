@@ -36,7 +36,7 @@ export default function ActivePlayersScreen() {
   }
 
   function addPlayer() {
-    if (players.length + 1 <= 4) {
+    if (players.length + 1 <= 6) {
       setPlayers((prev: any[]) => {
         return prev.concat({
           player: prev.length + 1,
@@ -47,7 +47,6 @@ export default function ActivePlayersScreen() {
   }
 
   function removePlayer(playerToDelete: Player) {
-    console.log('REMOVE PLAYER: ', playerToDelete.player, playerToDelete);
     setPlayers((prev: any[]) => {
       let cpy = [...prev];
       cpy = cpy.filter((player: Player, index: number) => {
