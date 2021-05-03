@@ -55,7 +55,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
             console.log('Pressed!');
           }}
         >
-          <Ionicons name="settings" size={20} color="grey" />
+          <Ionicons name='settings' size={20} color='grey' />
         </TouchableOpacity>
       </View>
       <View
@@ -65,20 +65,20 @@ export const StatusContainer = (props: StatusContainerProps) => {
           alignItems: 'center',
         }}
       >
-        <CustomButton onPress={() => updateLifeTotal(-1)} color="red">
+        <CustomButton onPress={() => updateLifeTotal(-1)} color='red'>
           -1
         </CustomButton>
 
-        <CustomButton onPress={() => updateLifeTotal(-1)} color="red">
+        <CustomButton onPress={() => updateLifeTotal(-5)} color='red'>
           -5
         </CustomButton>
         <Text style={getLifeTotalStyles()}>{health}</Text>
 
-        <CustomButton onPress={() => updateLifeTotal(-1)} color="black">
+        <CustomButton onPress={() => updateLifeTotal(1)} color='black'>
           +1
         </CustomButton>
 
-        <CustomButton onPress={() => updateLifeTotal(-1)} color="black">
+        <CustomButton onPress={() => updateLifeTotal(5)} color='black'>
           +5
         </CustomButton>
       </View>
