@@ -39,26 +39,24 @@ export const StatusContainer = (props: StatusContainerProps) => {
       <View
         style={{
           flexDirection: 'row',
-          marginTop: 8,
-          marginLeft: 8,
+          justifyContent: 'space-between',
           alignItems: 'center',
+          margin: 8,
         }}
       >
-        <Pressable style={{ alignItems: 'center', justifyContent: 'center' }}>
+        <Pressable>
           <Ionicons
-            name="settings"
+            name='settings'
             size={20}
-            color="black"
+            color='black'
             onPress={() => {
               console.log('Pressed!');
             }}
           />
         </Pressable>
-        <Text
-          style={{ textAlign: 'center', marginLeft: 10, alignItems: 'center' }}
-        >
-          {playerNumber}
-        </Text>
+        <View>
+          <Text>{playerNumber}</Text>
+        </View>
       </View>
       <View
         style={{

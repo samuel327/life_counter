@@ -1,10 +1,18 @@
-import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import {
+  Button,
+  Pressable,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 
 import { DieContainer } from './components/DieContainer';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from './components/StatusContainer';
-
+import { Ionicons } from '@expo/vector-icons';
 export default function App() {
   const [numberOfPlayers, setNumberOfPlayers] = useState<number[]>([]);
 
@@ -12,40 +20,40 @@ export default function App() {
 
   function displayStatusContainers() {
     return numberOfPlayers.map((player: number, index: number) => {
-      return <StatusContainer playerNumber={player} key={index} />;
+      return (
+        <TouchableOpacity onLongPress={removePlayer} key={index}>
+          <StatusContainer playerNumber={player} />
+        </TouchableOpacity>
+      );
+    });
+  }
+
+  function addPlayer() {
+    if (numberOfPlayers.length + 1 <= 4) {
+      setNumberOfPlayers((prev: number[]) => {
+        let cpy = [...prev];
+        let lastEl = cpy[prev.length - 1] || 0;
+        return cpy.concat(lastEl + 1);
+      });
+    }
+  }
+
+  function removePlayer() {
+    setNumberOfPlayers((prev: number[]) => {
+      let cpy = [...prev];
+      cpy.pop();
+      return cpy;
     });
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}></View>
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
       <View style={styles.btns}>
-        <Button
-          title={'-'}
-          disabled={numberOfPlayers.length === 0 ? true : false}
-          onPress={() => {
-            console.log('MINUS A CONTAINER');
-            setNumberOfPlayers((prev: number[]) => {
-              let cpy = [...prev];
-              cpy.pop();
-              return cpy;
-            });
-          }}
-        />
-        <Button
-          title={'+'}
-          disabled={numberOfPlayers.length + 1 <= 4 ? false : true}
-          onPress={() => {
-            console.log('ADDING CONTAINER', numberOfPlayers.length);
-            setNumberOfPlayers((prev: number[]) => {
-              let cpy = [...prev];
-              console.log('CPY: ', cpy);
-              let lastEl = cpy[prev.length - 1] || 0;
-              return cpy.concat(lastEl + 1);
-            });
-          }}
-        />
+        <TouchableOpacity onPress={addPlayer}>
+          <Ionicons name='add' size={24} color='black' />
+        </TouchableOpacity>
       </View>
       <View style={styles.statusView}>{displayStatusContainers()}</View>
 
@@ -59,14 +67,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: { flex: 1 },
   header: {
-    height: 100,
+    height: 20,
   },
   statusView: {
     height: 500,
   },
   btns: {
+    marginRight: 15,
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   dieContainer: {
