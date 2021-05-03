@@ -75,7 +75,7 @@ export default function ActivePlayersScreen() {
       <View style={styles.header}></View>
       <StatusBar style='auto' />
       <View style={styles.btns}>
-        <Button title='Sort' onPress={() => sort()} />
+        {/* <Button title='Sort' onPress={() => sort()} /> */}
         <TouchableOpacity onPress={addPlayer}>
           <Ionicons name='add' size={24} color='black' />
         </TouchableOpacity>
