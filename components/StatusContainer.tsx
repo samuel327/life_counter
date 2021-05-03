@@ -31,6 +31,9 @@ export const StatusContainer = (props: StatusContainerProps) => {
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
+        <View>
+          <Text>{playerNumber}</Text>
+        </View>
         <TouchableOpacity
           onPress={() => {
             console.log('Pressed!');
@@ -38,9 +41,6 @@ export const StatusContainer = (props: StatusContainerProps) => {
         >
           <Ionicons name='settings' size={20} color='black' />
         </TouchableOpacity>
-        <View>
-          <Text>{playerNumber}</Text>
-        </View>
       </View>
       <View
         style={{
