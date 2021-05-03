@@ -52,9 +52,8 @@ export const DieContainer = () => {
       <View style={styles.diceView}>
         <Animated.View
           style={{ ...styles.dieStyles, ...{ transform: [{ rotate: spin }] } }}
-        >
-          <Text style={styles.text}>{dieState}</Text>
-        </Animated.View>
+        ></Animated.View>
+        <Text style={styles.text}>{dieState}</Text>
       </View>
       <View style={styles.dieButton}>
         <TouchableOpacity
@@ -66,7 +65,7 @@ export const DieContainer = () => {
             setTimeout(function () {
               clearInterval(roll.current);
               setIsRolling(false);
-            }, 500);
+            }, 800);
           }}
         >
           <Foundation
@@ -88,7 +87,6 @@ const styles = StyleSheet.create({
   },
   diceView: {
     flex: 1,
-
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -104,6 +102,9 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 120,
+    color: 'gold',
+    top: -170,
+    textAlign: 'center',
   },
   dieButton: { alignItems: 'center' },
 });
