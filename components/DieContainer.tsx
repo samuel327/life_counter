@@ -29,32 +29,47 @@ export const DieContainer = () => {
   }
 
   return (
-    <View style={{ alignItems: 'center' }}>
-      <Text style={styles.text}>{dieState}</Text>
-      <TouchableOpacity
-        disabled={isRolling ? true : false}
-        onPress={() => {
-          setIsRolling(true);
-          startRolling();
-          setTimeout(function () {
-            clearInterval(roll.current);
-            setIsRolling(false);
-          }, 500);
+    <View
+      style={{
+        height: '100%',
+
+        justifyContent: 'flex-end',
+      }}
+    >
+      <View style={{ height: '50%' }}>
+        <Text style={styles.text}>{dieState}</Text>
+      </View>
+      <View
+        style={{
+          justifyContent: 'flex-end',
+          alignItems: 'center',
         }}
       >
-        <Foundation
-          name='die-four'
-          size={40}
-          color={isRolling ? 'grey' : 'white'}
-        />
-      </TouchableOpacity>
+        <TouchableOpacity
+          disabled={isRolling ? true : false}
+          onPress={() => {
+            setIsRolling(true);
+            startRolling();
+            setTimeout(function () {
+              clearInterval(roll.current);
+              setIsRolling(false);
+            }, 500);
+          }}
+        >
+          <Foundation
+            name='die-four'
+            size={40}
+            color={isRolling ? 'grey' : 'white'}
+          />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   text: {
-    textAlign: 'center',
+    // textAlign: 'center',
     fontSize: 120,
     color: 'white',
   },

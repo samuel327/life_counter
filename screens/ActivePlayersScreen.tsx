@@ -56,10 +56,6 @@ export default function ActivePlayersScreen() {
         </TouchableOpacity>
       </View>
       <View style={styles.statusView}>{displayStatusContainers()}</View>
-
-      <View style={styles.dieContainer}>
-        <DieContainer />
-      </View>
     </SafeAreaView>
   );
 }
@@ -77,10 +73,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-  },
-  dieContainer: {
-    backgroundColor: 'black',
-    color: 'white',
-    justifyContent: 'flex-end',
   },
 });
