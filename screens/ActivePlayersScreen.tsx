@@ -11,6 +11,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
 import { Ionicons } from '@expo/vector-icons';
 import * as _ from 'lodash';
+import { Feather } from '@expo/vector-icons';
 export interface Player {
   player: number;
   health: number;
@@ -46,7 +47,7 @@ export default function ActivePlayersScreen() {
   }
 
   function addPlayer() {
-    if (players.length + 1 <= 6) {
+    if (players.length + 1 <= 4) {
       setPlayers((prev: any[]) => {
         return prev.concat({
           player: prev.length + 1,
@@ -81,8 +82,18 @@ export default function ActivePlayersScreen() {
       <StatusBar style='auto' />
       <View style={styles.btns}>
         {/* <Button title='Sort' onPress={() => sort()} /> */}
-        <TouchableOpacity onPress={addPlayer}>
-          <Ionicons name='add' size={24} color='black' />
+        <TouchableOpacity>
+          <Feather name='layout' size={24} color='black' />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={addPlayer}
+          disabled={players.length === 4 ? true : false}
+        >
+          <Ionicons
+            name='add'
+            size={24}
+            color={players.length === 4 ? 'grey' : 'black'}
+          />
         </TouchableOpacity>
       </View>
       <View style={styles.statusView}>{displayStatusContainers()}</View>
@@ -101,7 +112,7 @@ const styles = StyleSheet.create({
   btns: {
     marginRight: 15,
     flexDirection: 'row',
-    justifyContent: 'flex-end',
+    justifyContent: 'space-between',
     alignItems: 'center',
   },
 });

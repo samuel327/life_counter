@@ -57,9 +57,9 @@ export const StatusContainer = (props: StatusContainerProps) => {
       </View>
       <View
         style={{
-          alignItems: 'center',
           flexDirection: 'row',
-          justifyContent: 'center',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
         }}
       >
         <Button title={'-1'} onPress={() => updateLifeTotal(-1)} />
