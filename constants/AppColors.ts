@@ -42,4 +42,8 @@ export const AppColors = {
 
   //no colors
   colorless: '',
+
+  //statuses
+  danger: 'red',
+  healthy: 'green',
 };

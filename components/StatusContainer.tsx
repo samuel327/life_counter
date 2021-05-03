@@ -1,6 +1,7 @@
 import { Button, Pressable, StyleSheet, Text, View } from 'react-native';
 import React, { useState } from 'react';
 
+import { AppColors } from '../constants/AppColors';
 import { Ionicons } from '@expo/vector-icons';
 
 interface StatusContainerProps {
@@ -21,6 +22,17 @@ export const StatusContainer = (props: StatusContainerProps) => {
     setLifeStatus((prev: number) => {
       return prev + by;
     });
+  }
+
+  function getLifeTotalStyles() {
+    let baseStyle = styles.lifeTotal;
+    if (lifeStatus <= 10) {
+      baseStyle = { ...baseStyle, ...{ color: AppColors.danger } };
+    } else {
+      baseStyle = { ...baseStyle, ...{ color: AppColors.healthy } };
+    }
+
+    return baseStyle;
   }
   return (
     <View style={{ height: 100, backgroundColor: 'silver', margin: 5 }}>
@@ -57,7 +69,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
       >
         <Button title={'-1'} onPress={() => updateLifeTotal(-1)} />
         <Button title={'-5'} onPress={() => updateLifeTotal(-5)} />
-        <Text style={{ fontSize: 50 }}>{lifeStatus}</Text>
+        <Text style={getLifeTotalStyles()}>{lifeStatus}</Text>
         <Button title={'+1'} onPress={() => updateLifeTotal(1)} />
         <Button title={'+5'} onPress={() => updateLifeTotal(5)} />
       </View>
@@ -74,4 +86,5 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 5,
   },
+  lifeTotal: { fontSize: 50 },
 });
