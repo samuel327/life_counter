@@ -1,9 +1,15 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-export const PlayersGrid = () => {
+import { Player } from '../screens/ActivePlayersScreen';
+
+interface PlayersGrid {
+  players: Player[];
+}
+export const PlayersGrid = (props: PlayersGrid) => {
+  const { players } = props;
   return (
     <View style={styles.content}>
-      <View style={{ flex: 1, backgroundColor: 'blue', flexDirection: 'row' }}>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
         <View
           style={{
             flex: 1,
@@ -12,7 +18,7 @@ export const PlayersGrid = () => {
             alignItems: 'center',
           }}
         >
-          <Text>Player 1</Text>
+          <Text>{players?.[0]?.health}</Text>
         </View>
         <View
           style={{
@@ -25,7 +31,7 @@ export const PlayersGrid = () => {
           <Text>Player 2</Text>
         </View>
       </View>
-      <View style={{ flex: 1, backgroundColor: 'green', flexDirection: 'row' }}>
+      <View style={{ flex: 1, flexDirection: 'row' }}>
         <View
           style={{
             flex: 1,

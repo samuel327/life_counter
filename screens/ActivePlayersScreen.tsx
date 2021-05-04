@@ -114,7 +114,7 @@ export default function ActivePlayersScreen() {
             </TouchableOpacity>
           </View>
 
-          <PlayersGrid />
+          <PlayersGrid players={players} />
         </View>
       )}
       <LayoutModal
