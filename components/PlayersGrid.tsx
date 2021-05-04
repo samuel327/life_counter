@@ -9,46 +9,22 @@ export const PlayersGrid = (props: PlayersGrid) => {
   const { players } = props;
   return (
     <View style={styles.content}>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'green',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+      <View style={styles.half}>
+        <View style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}>
           <Text>{players?.[0]?.health}</Text>
         </View>
         <View
-          style={{
-            flex: 1,
-            backgroundColor: 'red',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+          style={{ ...styles.playerSpace, ...{ backgroundColor: 'orange' } }}
         >
           <Text>Player 2</Text>
         </View>
       </View>
-      <View style={{ flex: 1, flexDirection: 'row' }}>
-        <View
-          style={{
-            flex: 1,
-            backgroundColor: 'blue',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
+      <View style={styles.half}>
+        <View style={{ ...styles.playerSpace, ...{ backgroundColor: 'gold' } }}>
           <Text>Player 3</Text>
         </View>
         <View
-          style={{
-            flex: 1,
-            backgroundColor: 'black',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
+          style={{ ...styles.playerSpace, ...{ backgroundColor: 'black' } }}
         >
           <Text style={{ color: 'white' }}>Player 4</Text>
         </View>
@@ -59,4 +35,12 @@ export const PlayersGrid = (props: PlayersGrid) => {
 
 const styles = StyleSheet.create({
   content: { flex: 1, height: '100%', width: '100%' },
+  half: { flex: 1, flexDirection: 'row' },
+
+  playerSpace: {
+    flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
