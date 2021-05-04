@@ -7,28 +7,45 @@ interface PlayersGrid {
 }
 export const PlayersGrid = (props: PlayersGrid) => {
   const { players } = props;
+
+  function fourPlayerFormat() {
+    return (
+      <>
+        <View style={styles.half}>
+          <View
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}
+          >
+            <Text>{players?.[0]?.health}</Text>
+          </View>
+          <View
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'orange' } }}
+          >
+            <Text>{players?.[1]?.health}</Text>
+          </View>
+        </View>
+        <View style={styles.half}>
+          <View
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'gold' } }}
+          >
+            <Text>{players?.[2]?.health}</Text>
+          </View>
+          <View
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'black' } }}
+          >
+            <Text style={{ color: 'white' }}>{players?.[3]?.health}</Text>
+          </View>
+        </View>
+      </>
+    );
+  }
   return (
     <View style={styles.content}>
-      <View style={styles.half}>
-        <View style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}>
-          <Text>{players?.[0]?.health}</Text>
+      {players.length === 4 && fourPlayerFormat()}
+      {players.length < 4 && (
+        <View>
+          <Text>Unsupporterd format</Text>
         </View>
-        <View
-          style={{ ...styles.playerSpace, ...{ backgroundColor: 'orange' } }}
-        >
-          <Text>Player 2</Text>
-        </View>
-      </View>
-      <View style={styles.half}>
-        <View style={{ ...styles.playerSpace, ...{ backgroundColor: 'gold' } }}>
-          <Text>Player 3</Text>
-        </View>
-        <View
-          style={{ ...styles.playerSpace, ...{ backgroundColor: 'black' } }}
-        >
-          <Text style={{ color: 'white' }}>Player 4</Text>
-        </View>
-      </View>
+      )}
     </View>
   );
 };
