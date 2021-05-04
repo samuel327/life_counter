@@ -107,19 +107,15 @@ export default function ActivePlayersScreen() {
         </>
       )}
       {layout === 'grid' && (
-        <>
-          <View>
-            <View style={styles.header}></View>
-            <StatusBar style='auto' />
-            <View style={styles.btns}>
-              <TouchableOpacity onPress={() => setModalVisible(true)}>
-                <Feather name='layout' size={24} color='black' />
-              </TouchableOpacity>
-            </View>
-
-            <PlayersGrid />
+        <View style={{ flex: 1 }}>
+          <View style={styles.btns}>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+              <Feather name='layout' size={24} color='black' />
+            </TouchableOpacity>
           </View>
-        </>
+
+          <PlayersGrid />
+        </View>
       )}
       <LayoutModal
         visible={modalVisible}
