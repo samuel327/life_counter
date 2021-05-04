@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View,
+  Text,
 } from 'react-native';
 import React, { useState } from 'react';
 
@@ -12,6 +13,8 @@ import { StatusContainer } from '../components/StatusContainer';
 import { Ionicons } from '@expo/vector-icons';
 import * as _ from 'lodash';
 import { Feather } from '@expo/vector-icons';
+import { LayoutModal } from '../components/modals/LayoutModal';
+import { PlayersGrid } from '../components/PlayersGrid';
 export interface Player {
   player: number;
   health: number;
@@ -23,6 +26,9 @@ export default function ActivePlayersScreen() {
     { player: 3, health: 40 },
     { player: 4, health: 40 },
   ]);
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
+
+  const [layout, setLayout] = useState<string>('columnar');
 
   function sort() {
     setPlayers((prev: Player[]) => {
@@ -78,25 +84,48 @@ export default function ActivePlayersScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.header}></View>
-      <StatusBar style='auto' />
-      <View style={styles.btns}>
-        {/* <Button title='Sort' onPress={() => sort()} /> */}
-        <TouchableOpacity>
-          <Feather name='layout' size={24} color='black' />
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={addPlayer}
-          disabled={players.length === 4 ? true : false}
-        >
-          <Ionicons
-            name='add'
-            size={24}
-            color={players.length === 4 ? 'grey' : 'black'}
-          />
-        </TouchableOpacity>
-      </View>
-      <View style={styles.statusView}>{displayStatusContainers()}</View>
+      {layout === 'columnar' && (
+        <>
+          <View style={styles.header}></View>
+          <StatusBar style='auto' />
+          <View style={styles.btns}>
+            <TouchableOpacity onPress={() => setModalVisible(true)}>
+              <Feather name='layout' size={24} color='black' />
+            </TouchableOpacity>
+            <TouchableOpacity
+              onPress={addPlayer}
+              disabled={players.length === 4 ? true : false}
+            >
+              <Ionicons
+                name='add'
+                size={24}
+                color={players.length === 4 ? 'grey' : 'black'}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.statusView}>{displayStatusContainers()}</View>
+        </>
+      )}
+      {layout === 'grid' && (
+        <>
+          <View>
+            <View style={styles.header}></View>
+            <StatusBar style='auto' />
+            <View style={styles.btns}>
+              <TouchableOpacity onPress={() => setModalVisible(true)}>
+                <Feather name='layout' size={24} color='black' />
+              </TouchableOpacity>
+            </View>
+
+            <PlayersGrid />
+          </View>
+        </>
+      )}
+      <LayoutModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        setLayout={setLayout}
+      />
     </SafeAreaView>
   );
 }
