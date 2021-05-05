@@ -1,4 +1,4 @@
-import { Button, Modal, StyleSheet, Text, View } from 'react-native';
+import { Modal, StyleSheet, Text, View } from 'react-native';
 
 import { CustomButton } from '../CustomButton';
 import React from 'react';
@@ -21,7 +21,7 @@ export const LayoutModal = (props: LayoutModalProps) => {
         <Text
           style={{ fontSize: 22, alignSelf: 'flex-start', marginLeft: '12%' }}
         >
-          Choose a layout:{' '}
+          Choose a layout:
         </Text>
         <View style={styles.btns}>
           <View style={{ width: 150, alignItems: 'center' }}>
