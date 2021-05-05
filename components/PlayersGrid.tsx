@@ -15,26 +15,50 @@ export const PlayersGrid = (props: PlayersGrid) => {
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}
           >
-            <Text
+            <View
               style={{
-                ...styles.text,
-                ...{ transform: [{ rotate: '90deg' }] },
+                transform: [{ rotate: '90deg' }],
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
             >
-              {players?.[0]?.health}
-            </Text>
+              <Button title='-1' onPress={() => {}} />
+              <Button title='-5' onPress={() => {}} />
+              <Text
+                style={{
+                  ...styles.text,
+                  ...{},
+                }}
+              >
+                {players?.[0]?.health}
+              </Text>
+              <Button title='+1' onPress={() => {}} />
+              <Button title='+5' onPress={() => {}} />
+            </View>
           </View>
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'white' } }}
           >
-            <Text
+            <View
               style={{
-                ...styles.text,
-                ...{ transform: [{ rotate: '-90deg' }] },
+                transform: [{ rotate: '-90deg' }],
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
             >
-              {players?.[1]?.health}
-            </Text>
+              <Button title='-1' onPress={() => {}} />
+              <Button title='-5' onPress={() => {}} />
+              <Text
+                style={{
+                  ...styles.text,
+                  ...{},
+                }}
+              >
+                {players?.[1]?.health}
+              </Text>
+              <Button title='+1' onPress={() => {}} />
+              <Button title='+5' onPress={() => {}} />
+            </View>
           </View>
         </View>
         <View style={{ alignItems: 'center', backgroundColor: 'silver' }}>
@@ -47,26 +71,50 @@ export const PlayersGrid = (props: PlayersGrid) => {
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'green' } }}
           >
-            <Text
+            <View
               style={{
-                ...styles.text,
-                ...{ transform: [{ rotate: '90deg' }] },
+                transform: [{ rotate: '90deg' }],
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
             >
-              {players?.[2]?.health}
-            </Text>
+              <Button title='-1' onPress={() => {}} />
+              <Button title='-5' onPress={() => {}} />
+              <Text
+                style={{
+                  ...styles.text,
+                  ...{},
+                }}
+              >
+                {players?.[2]?.health}
+              </Text>
+              <Button title='+1' onPress={() => {}} />
+              <Button title='+5' onPress={() => {}} />
+            </View>
           </View>
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'red' } }}
           >
-            <Text
+            <View
               style={{
-                ...styles.text,
-                ...{ transform: [{ rotate: '-90deg' }] },
+                transform: [{ rotate: '-90deg' }],
+                flexDirection: 'row',
+                alignItems: 'center',
               }}
             >
-              {players?.[3]?.health}
-            </Text>
+              <Button title='-1' onPress={() => {}} />
+              <Button title='-5' onPress={() => {}} />
+              <Text
+                style={{
+                  ...styles.text,
+                  ...{},
+                }}
+              >
+                {players?.[3]?.health}
+              </Text>
+              <Button title='+1' onPress={() => {}} />
+              <Button title='+5' onPress={() => {}} />
+            </View>
           </View>
         </View>
       </>
