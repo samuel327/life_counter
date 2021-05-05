@@ -1,20 +1,22 @@
+import * as _ from 'lodash';
+
 import {
   Button,
   SafeAreaView,
   StyleSheet,
+  Text,
   TouchableOpacity,
   View,
-  Text,
 } from 'react-native';
 import React, { useState } from 'react';
 
-import { StatusBar } from 'expo-status-bar';
-import { StatusContainer } from '../components/StatusContainer';
-import { Ionicons } from '@expo/vector-icons';
-import * as _ from 'lodash';
 import { Feather } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import { LayoutModal } from '../components/modals/LayoutModal';
 import { PlayersGrid } from '../components/PlayersGrid';
+import { StatusBar } from 'expo-status-bar';
+import { StatusContainer } from '../components/StatusContainer';
+
 export interface Player {
   player: number;
   health: number;
@@ -87,17 +89,17 @@ export default function ActivePlayersScreen() {
       {layout === 'columnar' && (
         <>
           <View style={styles.header}></View>
-          <StatusBar style='auto' />
+          <StatusBar style="auto" />
           <View style={styles.btns}>
             <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name='layout' size={24} color='black' />
+              <Feather name="layout" size={24} color="black" />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={addPlayer}
               disabled={players.length === 4 ? true : false}
             >
               <Ionicons
-                name='add'
+                name="add"
                 size={24}
                 color={players.length === 4 ? 'grey' : 'black'}
               />
@@ -110,11 +112,11 @@ export default function ActivePlayersScreen() {
         <View style={{ flex: 1 }}>
           <View style={styles.btns}>
             <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name='layout' size={24} color='black' />
+              <Feather name="layout" size={24} color="black" />
             </TouchableOpacity>
           </View>
 
-          <PlayersGrid players={players} />
+          <PlayersGrid players={players} setPlayers={setPlayers} />
         </View>
       )}
       <LayoutModal

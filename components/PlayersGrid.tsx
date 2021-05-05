@@ -1,12 +1,32 @@
-import React from 'react';
-import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
-import { Player } from '../screens/ActivePlayersScreen';
+import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import { Foundation } from '@expo/vector-icons';
+import { Player } from '../screens/ActivePlayersScreen';
+import React from 'react';
+
 interface PlayersGrid {
   players: Player[];
+  setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
 }
 export const PlayersGrid = (props: PlayersGrid) => {
-  const { players } = props;
+  const { players, setPlayers } = props;
+
+  function updateLifeTotal(playerNumber: number, by: number) {
+    setPlayers((prev: Player[]) => {
+      let cpy = [...prev];
+      //cpy[playerNumber - 1].health = health + by;
+      cpy = cpy.map((player: Player, index: number) => {
+        if (player.player === playerNumber) {
+          player.health = player.health + by;
+        }
+        return player;
+      });
+      return cpy;
+      // let sorted = _.sortBy(cpy, (o: Player) => o.health).reverse();
+
+      // return sorted;
+    });
+  }
 
   function fourPlayerFormat() {
     return (
@@ -22,8 +42,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
                 alignItems: 'center',
               }}
             >
-              <Button title='-1' onPress={() => {}} />
-              <Button title='-5' onPress={() => {}} />
+              <Button
+                title="-1"
+                onPress={() => {
+                  updateLifeTotal(1, -1);
+                }}
+              />
+              <Button
+                title="-5"
+                onPress={() => {
+                  updateLifeTotal(1, -5);
+                }}
+              />
               <Text
                 style={{
                   ...styles.text,
@@ -32,8 +62,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
               >
                 {players?.[0]?.health}
               </Text>
-              <Button title='+1' onPress={() => {}} />
-              <Button title='+5' onPress={() => {}} />
+              <Button
+                title="+1"
+                onPress={() => {
+                  updateLifeTotal(1, 1);
+                }}
+              />
+              <Button
+                title="+5"
+                onPress={() => {
+                  updateLifeTotal(1, 5);
+                }}
+              />
             </View>
           </View>
           <View
@@ -46,8 +86,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
                 alignItems: 'center',
               }}
             >
-              <Button title='-1' onPress={() => {}} />
-              <Button title='-5' onPress={() => {}} />
+              <Button
+                title="-1"
+                onPress={() => {
+                  updateLifeTotal(2, -1);
+                }}
+              />
+              <Button
+                title="-5"
+                onPress={() => {
+                  updateLifeTotal(2, -5);
+                }}
+              />
               <Text
                 style={{
                   ...styles.text,
@@ -56,14 +106,24 @@ export const PlayersGrid = (props: PlayersGrid) => {
               >
                 {players?.[1]?.health}
               </Text>
-              <Button title='+1' onPress={() => {}} />
-              <Button title='+5' onPress={() => {}} />
+              <Button
+                title="+1"
+                onPress={() => {
+                  updateLifeTotal(2, 1);
+                }}
+              />
+              <Button
+                title="+5"
+                onPress={() => {
+                  updateLifeTotal(2, 5);
+                }}
+              />
             </View>
           </View>
         </View>
         <View style={{ alignItems: 'center', backgroundColor: 'silver' }}>
           <TouchableOpacity>
-            <Foundation name='die-four' size={50} />
+            <Foundation name="die-four" size={50} />
           </TouchableOpacity>
         </View>
 
@@ -78,8 +138,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
                 alignItems: 'center',
               }}
             >
-              <Button title='-1' onPress={() => {}} />
-              <Button title='-5' onPress={() => {}} />
+              <Button
+                title="-1"
+                onPress={() => {
+                  updateLifeTotal(3, -1);
+                }}
+              />
+              <Button
+                title="-5"
+                onPress={() => {
+                  updateLifeTotal(3, -5);
+                }}
+              />
               <Text
                 style={{
                   ...styles.text,
@@ -88,8 +158,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
               >
                 {players?.[2]?.health}
               </Text>
-              <Button title='+1' onPress={() => {}} />
-              <Button title='+5' onPress={() => {}} />
+              <Button
+                title="+1"
+                onPress={() => {
+                  updateLifeTotal(3, 1);
+                }}
+              />
+              <Button
+                title="+5"
+                onPress={() => {
+                  updateLifeTotal(3, 5);
+                }}
+              />
             </View>
           </View>
           <View
@@ -102,8 +182,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
                 alignItems: 'center',
               }}
             >
-              <Button title='-1' onPress={() => {}} />
-              <Button title='-5' onPress={() => {}} />
+              <Button
+                title="-1"
+                onPress={() => {
+                  updateLifeTotal(4, -1);
+                }}
+              />
+              <Button
+                title="-5"
+                onPress={() => {
+                  updateLifeTotal(4, -5);
+                }}
+              />
               <Text
                 style={{
                   ...styles.text,
@@ -112,8 +202,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
               >
                 {players?.[3]?.health}
               </Text>
-              <Button title='+1' onPress={() => {}} />
-              <Button title='+5' onPress={() => {}} />
+              <Button
+                title="+1"
+                onPress={() => {
+                  updateLifeTotal(4, 1);
+                }}
+              />
+              <Button
+                title="+5"
+                onPress={() => {
+                  updateLifeTotal(4, 5);
+                }}
+              />
             </View>
           </View>
         </View>
