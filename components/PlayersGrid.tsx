@@ -1,5 +1,6 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { CustomButton } from './CustomButton';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
 import React from 'react';
@@ -42,18 +43,29 @@ export const PlayersGrid = (props: PlayersGrid) => {
                 alignItems: 'center',
               }}
             >
-              <Button
+              {/* <Button
                 title="-1"
                 onPress={() => {
                   updateLifeTotal(1, -1);
                 }}
-              />
-              <Button
-                title="-5"
-                onPress={() => {
-                  updateLifeTotal(1, -5);
-                }}
-              />
+              /> */}
+              <View style={{ margin: 10 }}>
+                <CustomButton
+                  color={'red'}
+                  onPress={() => updateLifeTotal(1, -1)}
+                >
+                  -1
+                </CustomButton>
+              </View>
+              <View style={{ marginHorizontal: 10 }}>
+                <CustomButton
+                  color={'red'}
+                  onPress={() => updateLifeTotal(1, -5)}
+                >
+                  -5
+                </CustomButton>
+              </View>
+
               <Text
                 style={{
                   ...styles.text,
@@ -62,18 +74,24 @@ export const PlayersGrid = (props: PlayersGrid) => {
               >
                 {players?.[0]?.health}
               </Text>
-              <Button
-                title="+1"
-                onPress={() => {
-                  updateLifeTotal(1, 1);
-                }}
-              />
-              <Button
-                title="+5"
-                onPress={() => {
-                  updateLifeTotal(1, 5);
-                }}
-              />
+
+              <View style={{ marginHorizontal: 10 }}>
+                <CustomButton
+                  color={'black'}
+                  onPress={() => updateLifeTotal(1, 1)}
+                >
+                  +1
+                </CustomButton>
+              </View>
+
+              <View style={{ marginHorizontal: 10 }}>
+                <CustomButton
+                  color={'black'}
+                  onPress={() => updateLifeTotal(1, 5)}
+                >
+                  +5
+                </CustomButton>
+              </View>
             </View>
           </View>
           <View
