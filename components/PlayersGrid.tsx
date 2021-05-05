@@ -15,12 +15,26 @@ export const PlayersGrid = (props: PlayersGrid) => {
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}
           >
-            <Text style={styles.text}>{players?.[0]?.health}</Text>
+            <Text
+              style={{
+                ...styles.text,
+                ...{ transform: [{ rotate: '90deg' }] },
+              }}
+            >
+              {players?.[0]?.health}
+            </Text>
           </View>
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'white' } }}
           >
-            <Text style={styles.text}>{players?.[1]?.health}</Text>
+            <Text
+              style={{
+                ...styles.text,
+                ...{ transform: [{ rotate: '-90deg' }] },
+              }}
+            >
+              {players?.[1]?.health}
+            </Text>
           </View>
         </View>
         <View style={{ alignItems: 'center', backgroundColor: 'silver' }}>
@@ -33,12 +47,26 @@ export const PlayersGrid = (props: PlayersGrid) => {
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'green' } }}
           >
-            <Text style={styles.text}>{players?.[2]?.health}</Text>
+            <Text
+              style={{
+                ...styles.text,
+                ...{ transform: [{ rotate: '90deg' }] },
+              }}
+            >
+              {players?.[2]?.health}
+            </Text>
           </View>
           <View
             style={{ ...styles.playerSpace, ...{ backgroundColor: 'red' } }}
           >
-            <Text style={styles.text}>{players?.[3]?.health}</Text>
+            <Text
+              style={{
+                ...styles.text,
+                ...{ transform: [{ rotate: '-90deg' }] },
+              }}
+            >
+              {players?.[3]?.health}
+            </Text>
           </View>
         </View>
       </>
@@ -73,6 +101,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
   },
   text: {
-    fontSize: 22,
+    fontSize: 70,
   },
 });
