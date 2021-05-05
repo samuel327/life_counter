@@ -18,7 +18,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
             <Text style={styles.text}>{players?.[0]?.health}</Text>
           </View>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'orange' } }}
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'white' } }}
           >
             <Text style={styles.text}>{players?.[1]?.health}</Text>
           </View>
@@ -31,7 +31,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
 
         <View style={styles.half}>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'gold' } }}
+            style={{ ...styles.playerSpace, ...{ backgroundColor: 'green' } }}
           >
             <Text style={styles.text}>{players?.[2]?.health}</Text>
           </View>
@@ -57,7 +57,12 @@ export const PlayersGrid = (props: PlayersGrid) => {
 };
 
 const styles = StyleSheet.create({
-  content: { flex: 1, height: '100%', width: '100%' },
+  content: {
+    flex: 1,
+    height: '100%',
+    width: '100%',
+    backgroundColor: 'silver',
+  },
   half: { flex: 1, flexDirection: 'row' },
 
   playerSpace: {
@@ -65,6 +70,7 @@ const styles = StyleSheet.create({
 
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 20,
   },
   text: {
     fontSize: 22,
