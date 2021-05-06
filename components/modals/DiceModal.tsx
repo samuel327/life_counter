@@ -9,7 +9,7 @@ interface DiceModalProps {
 export const DiceModal = (props: DiceModalProps) => {
   const { visible, setDiceModalVisible } = props;
   return (
-    <Modal visible={visible}>
+    <Modal visible={visible} animationType="fade">
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Die Modal TBD</Text>
         <Button title="Close" onPress={() => setDiceModalVisible(false)} />
