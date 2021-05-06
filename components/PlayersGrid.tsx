@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 15,
     marginHorizontal: 5,
-    marginBottom: -30,
+    marginBottom: -35,
   },
 
   playerSpaceBottom: {
@@ -307,7 +307,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 15,
     marginHorizontal: 5,
-    marginTop: -30,
+    marginTop: -35,
   },
   text: {
     fontSize: 70,
@@ -315,5 +315,10 @@ const styles = StyleSheet.create({
   middleOptionsView: {
     alignItems: 'center',
     zIndex: 5,
+    backgroundColor: 'black',
+    borderRadius: 40,
+    height: 80,
+    justifyContent: 'center',
+    width: 80,
   },
 });
