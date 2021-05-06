@@ -1,9 +1,10 @@
 import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useState } from 'react';
 
 import { CustomButton } from './CustomButton';
+import { DiceModal } from './modals/DiceModal';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
-import React from 'react';
 
 interface PlayersGrid {
   players: Player[];
@@ -11,6 +12,8 @@ interface PlayersGrid {
 }
 export const PlayersGrid = (props: PlayersGrid) => {
   const { players, setPlayers } = props;
+
+  const [diceModalVisible, setDiceModalVisible] = useState<boolean>(false);
 
   function updateLifeTotal(playerNumber: number, by: number) {
     setPlayers((prev: Player[]) => {
@@ -140,7 +143,11 @@ export const PlayersGrid = (props: PlayersGrid) => {
           </View>
         </View>
         <View style={styles.middleOptionsView}>
-          <TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => {
+              setDiceModalVisible(true);
+            }}
+          >
             <Foundation name="die-four" size={70} color="silver" />
           </TouchableOpacity>
         </View>
@@ -267,6 +274,12 @@ export const PlayersGrid = (props: PlayersGrid) => {
         <View>
           <Text>Unsupporterd format</Text>
         </View>
+      )}
+      {diceModalVisible && (
+        <DiceModal
+          visible={diceModalVisible}
+          setDiceModalVisible={setDiceModalVisible}
+        />
       )}
     </View>
   );
