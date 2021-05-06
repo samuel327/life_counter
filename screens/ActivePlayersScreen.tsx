@@ -137,7 +137,8 @@ const styles = StyleSheet.create({
     height: 500,
   },
   btns: {
-    marginRight: 15,
+    marginLeft: 15,
+    marginVertical: 3,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

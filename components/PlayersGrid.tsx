@@ -15,7 +15,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
   function updateLifeTotal(playerNumber: number, by: number) {
     setPlayers((prev: Player[]) => {
       let cpy = [...prev];
-      //cpy[playerNumber - 1].health = health + by;
+
       cpy = cpy.map((player: Player, index: number) => {
         if (player.player === playerNumber) {
           player.health = player.health + by;
@@ -23,18 +23,15 @@ export const PlayersGrid = (props: PlayersGrid) => {
         return player;
       });
       return cpy;
-      // let sorted = _.sortBy(cpy, (o: Player) => o.health).reverse();
-
-      // return sorted;
     });
   }
 
   function fourPlayerFormat() {
     return (
-      <>
+      <View style={styles.board}>
         <View style={styles.half}>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'blue' } }}
+            style={{ ...styles.playerSpaceTop, ...{ backgroundColor: 'blue' } }}
           >
             <View
               style={{
@@ -89,7 +86,10 @@ export const PlayersGrid = (props: PlayersGrid) => {
             </View>
           </View>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'white' } }}
+            style={{
+              ...styles.playerSpaceTop,
+              ...{ backgroundColor: 'white' },
+            }}
           >
             <View
               style={{
@@ -139,15 +139,18 @@ export const PlayersGrid = (props: PlayersGrid) => {
             </View>
           </View>
         </View>
-        <View style={{ alignItems: 'center', backgroundColor: 'silver' }}>
+        <View style={styles.middleOptionsView}>
           <TouchableOpacity>
-            <Foundation name="die-four" size={50} />
+            <Foundation name="die-four" size={50} color="white" />
           </TouchableOpacity>
         </View>
 
         <View style={styles.half}>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'green' } }}
+            style={{
+              ...styles.playerSpaceBottom,
+              ...{ backgroundColor: 'green' },
+            }}
           >
             <View
               style={{
@@ -199,7 +202,10 @@ export const PlayersGrid = (props: PlayersGrid) => {
             </View>
           </View>
           <View
-            style={{ ...styles.playerSpace, ...{ backgroundColor: 'red' } }}
+            style={{
+              ...styles.playerSpaceBottom,
+              ...{ backgroundColor: 'red' },
+            }}
           >
             <View
               style={{
@@ -251,7 +257,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
             </View>
           </View>
         </View>
-      </>
+      </View>
     );
   }
   return (
@@ -267,22 +273,46 @@ export const PlayersGrid = (props: PlayersGrid) => {
 };
 
 const styles = StyleSheet.create({
+  board: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: '99%',
+  },
   content: {
     flex: 1,
     height: '100%',
     width: '100%',
-    backgroundColor: 'silver',
+    backgroundColor: 'black',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   half: { flex: 1, flexDirection: 'row' },
-
-  playerSpace: {
+  playerSpaceTop: {
     flex: 1,
 
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
+    marginTop: 15,
+    marginHorizontal: 5,
+    marginBottom: -20,
+  },
+
+  playerSpaceBottom: {
+    flex: 1,
+
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 20,
+    marginBottom: 15,
+    marginHorizontal: 5,
+    marginTop: -20,
   },
   text: {
     fontSize: 70,
+  },
+  middleOptionsView: {
+    alignItems: 'center',
   },
 });
