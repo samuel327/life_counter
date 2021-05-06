@@ -141,7 +141,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
         </View>
         <View style={styles.middleOptionsView}>
           <TouchableOpacity>
-            <Foundation name="die-four" size={50} color="white" />
+            <Foundation name="die-four" size={70} color="silver" />
           </TouchableOpacity>
         </View>
 
@@ -296,7 +296,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 15,
     marginHorizontal: 5,
-    marginBottom: -20,
+    marginBottom: -30,
   },
 
   playerSpaceBottom: {
@@ -307,12 +307,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginBottom: 15,
     marginHorizontal: 5,
-    marginTop: -20,
+    marginTop: -30,
   },
   text: {
     fontSize: 70,
   },
   middleOptionsView: {
     alignItems: 'center',
+    zIndex: 5,
   },
 });
