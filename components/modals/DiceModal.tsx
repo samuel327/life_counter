@@ -31,7 +31,7 @@ export const DiceModal = (props: DiceModalProps) => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ color: 'white', textAlign: 'center' }}>
+          <Text style={{ color: 'grey', textAlign: 'center' }}>
             Die Modal TBD
           </Text>
 
@@ -39,15 +39,16 @@ export const DiceModal = (props: DiceModalProps) => {
             <View
               style={{
                 width: 200,
-                borderColor: 'white',
-                borderWidth: 2,
+                //borderColor: 'grey',
+                borderWidth: 6,
                 borderRadius: 5,
                 alignItems: 'center',
-                height: 30,
+                height: 50,
                 justifyContent: 'center',
+                borderColor: 'rgba(158, 150, 150, .5)',
               }}
             >
-              <Text style={{ color: 'white' }}>Close</Text>
+              <Text style={{ color: 'white', fontSize: 22 }}>Close</Text>
             </View>
           </TouchableOpacity>
         </View>
