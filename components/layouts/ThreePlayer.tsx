@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Player } from '../../screens/ActivePlayersScreen';
-
+import { Foundation } from '@expo/vector-icons';
 interface ThreePlayerProps {
   players: Player[];
   setPlayers: Function;
@@ -40,7 +40,7 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
               alignItems: 'center',
             }}
           >
-            <Text style={styles.text}>Player 1</Text>
+            <Text style={styles.text}>{players?.[0]?.health}</Text>
           </View>
         </View>
         <View
@@ -58,14 +58,33 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
             }}
           >
             <Text style={{ ...styles.text, ...{ textAlign: 'center' } }}>
-              Player 2
+              {players?.[1]?.health}
             </Text>
           </View>
         </View>
       </View>
+      <View style={{ alignItems: 'center' }}>
+        <View style={styles.middleOptionsView}>
+          <TouchableOpacity
+            onPress={() => {
+              showDice(true);
+            }}
+          >
+            <Foundation name='die-four' size={70} color='silver' />
+          </TouchableOpacity>
+        </View>
+      </View>
 
-      <View style={{ flex: 1 }}>
-        <Text style={styles.text}>Player 3</Text>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'orange',
+          width: '100%',
+        }}
+      >
+        <Text style={styles.text}>{players?.[2]?.health}</Text>
       </View>
     </View>
   );
