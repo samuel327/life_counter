@@ -25,12 +25,45 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
   }
   return (
     <View style={styles.board}>
-      <View style={{ flex: 1 }}>
-        <Text style={styles.text}>Player 1</Text>
+      <View style={{ flex: 2, flexDirection: 'row' }}>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: 'yellow',
+          }}
+        >
+          <View
+            style={{
+              transform: [{ rotate: '90deg' }],
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Text style={styles.text}>Player 1</Text>
+          </View>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: 'center',
+            backgroundColor: 'green',
+          }}
+        >
+          <View
+            style={{
+              transform: [{ rotate: '-90deg' }],
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <Text style={{ ...styles.text, ...{ textAlign: 'center' } }}>
+              Player 2
+            </Text>
+          </View>
+        </View>
       </View>
-      <View style={{ flex: 1 }}>
-        <Text style={styles.text}>Player 2</Text>
-      </View>
+
       <View style={{ flex: 1 }}>
         <Text style={styles.text}>Player 3</Text>
       </View>
