@@ -37,6 +37,8 @@ export const TwoPlayer = (props: TwoPlayerProps) => {
           borderRadius: 20,
           transform: [{ rotate: '180deg' }],
           flexDirection: 'row',
+          marginBottom: -30,
+          marginTop: 30,
         }}
       >
         <View style={{ margin: 10 }}>
@@ -83,6 +85,9 @@ export const TwoPlayer = (props: TwoPlayerProps) => {
           alignItems: 'center',
           borderRadius: 20,
           flexDirection: 'row',
+          marginTop: -30,
+          zIndex: -1,
+          marginBottom: 30,
         }}
       >
         <View style={{ margin: 10 }}>
@@ -160,8 +165,8 @@ const styles = StyleSheet.create({
   // },
   middleOptionsView: {
     alignItems: 'center',
-    zIndex: 5,
-    // backgroundColor: 'black',
+    zIndex: 15,
+    backgroundColor: 'black',
     borderRadius: 40,
     height: 80,
     justifyContent: 'center',
