@@ -7,7 +7,7 @@ import {
   View,
 } from 'react-native';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 interface DiceModalProps {
   visible: boolean;
@@ -15,6 +15,8 @@ interface DiceModalProps {
 }
 export const DiceModal = (props: DiceModalProps) => {
   const { visible, setDiceModalVisible } = props;
+
+  const [rolledNum, setRolledNum] = useState<number>();
   return (
     <Modal visible={visible} animationType='fade'>
       <View
@@ -31,10 +33,19 @@ export const DiceModal = (props: DiceModalProps) => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ color: 'grey', textAlign: 'center' }}>
-            Die Modal TBD
+          <Text style={{ color: 'grey', textAlign: 'center' }}></Text>
+          <TouchableOpacity
+            onPress={() => {
+              setRolledNum(Math.floor(Math.random() * 20 + 1));
+            }}
+          >
+            <Text style={{ color: 'white', fontSize: 70, textAlign: 'center' }}>
+              D20
+            </Text>
+          </TouchableOpacity>
+          <Text style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>
+            {rolledNum}
           </Text>
-
           <TouchableOpacity onPress={() => setDiceModalVisible(false)}>
             <View
               style={{
