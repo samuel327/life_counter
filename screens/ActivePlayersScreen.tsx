@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 
@@ -89,17 +90,17 @@ export default function ActivePlayersScreen() {
       {layout === 'columnar' && (
         <>
           <View style={styles.header}></View>
-          <StatusBar style="auto" />
+          <StatusBar style='auto' />
           <View style={styles.btns}>
             <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name="layout" size={24} color="black" />
+              <Feather name='layout' size={24} color='black' />
             </TouchableOpacity>
             <TouchableOpacity
               onPress={addPlayer}
               disabled={players.length === 4 ? true : false}
             >
               <Ionicons
-                name="add"
+                name='add'
                 size={24}
                 color={players.length === 4 ? 'grey' : 'black'}
               />
@@ -112,7 +113,12 @@ export default function ActivePlayersScreen() {
         <View style={{ flex: 1 }}>
           <View style={styles.btns}>
             <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name="layout" size={24} color="black" />
+              <Feather name='layout' size={24} color='black' />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image
+                source={require('../assets/addUserIcon/icons8-add-user-male-30.png')}
+              />
             </TouchableOpacity>
           </View>
 
