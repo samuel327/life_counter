@@ -15,7 +15,7 @@ interface ChooseNumPlayersProps {
   setPlayers: Dispatch<SetStateAction<Player[]>>;
 }
 export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
-  const { visible, onClose } = props;
+  const { visible, onClose, setPlayers } = props;
   return (
     <Modal visible={visible} style={{ backgroundColor: 'black' }}>
       <View
@@ -29,23 +29,50 @@ export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
           }}
         >
           <Text style={{ ...styles.text, ...{ textAlign: 'left' } }}>
-            Choose number of players:
+            Number of players:
           </Text>
         </View>
         <View style={styles.content}>
           <View style={styles.viewsContainer}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setPlayers([
+                  { player: 1, health: 40 },
+                  { player: 2, health: 40 },
+                ]);
+                onClose();
+              }}
+            >
               <View style={styles.view}>
                 <Text style={styles.text}>2</Text>
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setPlayers([
+                  { player: 1, health: 40 },
+                  { player: 2, health: 40 },
+                  { player: 3, health: 40 },
+                ]);
+                onClose();
+              }}
+            >
               <View style={styles.view}>
                 <Text style={styles.text}>3</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                setPlayers([
+                  { player: 1, health: 40 },
+                  { player: 2, health: 40 },
+                  { player: 3, health: 40 },
+                  { player: 4, health: 40 },
+                ]);
+                onClose();
+              }}
+            >
               <View style={styles.view}>
                 <Text style={styles.text}>4</Text>
               </View>
@@ -55,10 +82,10 @@ export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
             <View
               style={{
                 width: 150,
-                height: 50,
+                height: 70,
                 borderWidth: 3,
                 borderRadius: 20,
-                borderColor: 'white',
+                borderColor: 'rgba(158, 150, 150, .5)',
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
@@ -87,7 +114,7 @@ const styles = StyleSheet.create({
     width: 100,
     justifyContent: 'center',
     alignItems: 'center',
-    borderColor: 'white',
+    borderColor: 'rgba(158, 150, 150, .5)',
     borderRadius: 20,
     borderWidth: 5,
     marginBottom: 150,
@@ -95,5 +122,6 @@ const styles = StyleSheet.create({
   },
   text: {
     color: 'white',
+    fontSize: 30,
   },
 });

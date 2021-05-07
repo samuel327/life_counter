@@ -5,7 +5,6 @@ import { CustomButton } from './CustomButton';
 import { DiceModal } from './modals/DiceModal';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
-
 interface PlayersGrid {
   players: Player[];
   setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
@@ -148,7 +147,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
               setDiceModalVisible(true);
             }}
           >
-            <Foundation name="die-four" size={70} color="silver" />
+            <Foundation name='die-four' size={70} color='silver' />
           </TouchableOpacity>
         </View>
 
@@ -270,9 +269,10 @@ export const PlayersGrid = (props: PlayersGrid) => {
   return (
     <View style={styles.content}>
       {players.length === 4 && fourPlayerFormat()}
+      {/* {players.length === 2 && <TwoPlayer />} */}
       {players.length < 4 && (
         <View>
-          <Text>Unsupporterd format</Text>
+          <Text style={{ color: 'white' }}>Unsupported format</Text>
         </View>
       )}
       {diceModalVisible && (
