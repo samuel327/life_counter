@@ -25,12 +25,23 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
   }
   return (
     <View style={styles.board}>
-      <View style={{ flex: 2, flexDirection: 'row' }}>
+      <View
+        style={{
+          flex: 2,
+          flexDirection: 'row',
+          marginBottom: -30,
+          width: '98%',
+        }}
+      >
         <View
           style={{
             flex: 1,
             justifyContent: 'center',
             backgroundColor: 'yellow',
+            marginRight: 10,
+
+            borderRadius: 20,
+            marginTop: 10,
           }}
         >
           <View
@@ -48,6 +59,10 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
             flex: 1,
             justifyContent: 'center',
             backgroundColor: 'green',
+            marginLeft: 10,
+
+            borderRadius: 20,
+            marginTop: 10,
           }}
         >
           <View
@@ -81,7 +96,11 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
           justifyContent: 'center',
           alignItems: 'center',
           backgroundColor: 'orange',
-          width: '100%',
+          width: '98%',
+          marginTop: -30,
+          zIndex: -1,
+          marginBottom: 10,
+          borderRadius: 20,
         }}
       >
         <Text style={styles.text}>{players?.[2]?.health}</Text>
