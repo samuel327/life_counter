@@ -137,6 +137,7 @@ export default function ActivePlayersScreen() {
       <ChooseNumPlayers
         visible={playerNumModalVisible}
         onClose={() => setPlayerNumModalVisible(false)}
+        setPlayers={setPlayers}
       />
     </SafeAreaView>
   );
