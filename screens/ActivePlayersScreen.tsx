@@ -17,6 +17,7 @@ import { LayoutModal } from '../components/modals/LayoutModal';
 import { PlayersGrid } from '../components/PlayersGrid';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
+import { ChooseNumPlayers } from '../components/modals/ChooseNumPlayers';
 
 export interface Player {
   player: number;
@@ -30,6 +31,9 @@ export default function ActivePlayersScreen() {
     { player: 4, health: 40 },
   ]);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
+  const [playerNumModalVisible, setPlayerNumModalVisible] = useState<boolean>(
+    false
+  );
 
   const [layout, setLayout] = useState<string>('columnar');
 
@@ -115,7 +119,7 @@ export default function ActivePlayersScreen() {
             <TouchableOpacity onPress={() => setModalVisible(true)}>
               <Feather name='layout' size={24} color='black' />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => setPlayerNumModalVisible(true)}>
               <Image
                 source={require('../assets/addUserIcon/icons8-add-user-male-30.png')}
               />
@@ -129,6 +133,10 @@ export default function ActivePlayersScreen() {
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
         setLayout={setLayout}
+      />
+      <ChooseNumPlayers
+        visible={playerNumModalVisible}
+        onClose={() => setPlayerNumModalVisible(false)}
       />
     </SafeAreaView>
   );
