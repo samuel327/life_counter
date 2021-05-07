@@ -6,6 +6,7 @@ import { DiceModal } from './modals/DiceModal';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
 import { TwoPlayer } from '../components/layouts/TwoPlayer';
+import { ThreePlayer } from './layouts/ThreePlayer';
 interface PlayersGrid {
   players: Player[];
   setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
@@ -270,6 +271,13 @@ export const PlayersGrid = (props: PlayersGrid) => {
   return (
     <View style={styles.content}>
       {players.length === 4 && fourPlayerFormat()}
+      {players.length === 3 && (
+        <ThreePlayer
+          players={players}
+          setPlayers={setPlayers}
+          showDice={setDiceModalVisible}
+        />
+      )}
       {players.length === 2 && (
         <TwoPlayer
           players={players}
@@ -277,7 +285,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
           showDice={setDiceModalVisible}
         />
       )}
-      {players.length !== 4 && players.length !== 2 && (
+      {players.length !== 4 && players.length !== 2 && players.length !== 3 && (
         <View>
           <Text style={{ color: 'white' }}>Unsupported format</Text>
         </View>
