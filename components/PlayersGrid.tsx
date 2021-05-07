@@ -270,7 +270,13 @@ export const PlayersGrid = (props: PlayersGrid) => {
   return (
     <View style={styles.content}>
       {players.length === 4 && fourPlayerFormat()}
-      {players.length === 2 && <TwoPlayer />}
+      {players.length === 2 && (
+        <TwoPlayer
+          players={players}
+          setPlayers={setPlayers}
+          showDice={setDiceModalVisible}
+        />
+      )}
       {players.length !== 4 && players.length !== 2 && (
         <View>
           <Text style={{ color: 'white' }}>Unsupported format</Text>
