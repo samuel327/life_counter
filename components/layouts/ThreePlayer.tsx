@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Player } from '../../screens/ActivePlayersScreen';
 import { Foundation } from '@expo/vector-icons';
+import { CustomButton } from '../CustomButton';
 interface ThreePlayerProps {
   players: Player[];
   setPlayers: Function;
@@ -49,9 +50,49 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
               transform: [{ rotate: '90deg' }],
               justifyContent: 'center',
               alignItems: 'center',
+              flexDirection: 'row',
             }}
           >
-            <Text style={styles.text}>{players?.[0]?.health}</Text>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'red'}
+                onPress={() => updateLifeTotal(1, -1)}
+              >
+                -1
+              </CustomButton>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'red'}
+                onPress={() => updateLifeTotal(1, -5)}
+              >
+                -5
+              </CustomButton>
+            </View>
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+            >
+              <Text style={styles.text}>{players?.[0]?.health}</Text>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'black'}
+                onPress={() => updateLifeTotal(1, 1)}
+              >
+                +1
+              </CustomButton>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'black'}
+                onPress={() => updateLifeTotal(1, 5)}
+              >
+                +5
+              </CustomButton>
+            </View>
           </View>
         </View>
         <View
@@ -99,7 +140,7 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
           width: '98%',
           marginTop: -30,
           zIndex: -1,
-          marginBottom: 10,
+          marginBottom: 15,
           borderRadius: 20,
         }}
       >
