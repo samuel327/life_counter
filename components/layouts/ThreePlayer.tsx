@@ -111,11 +111,46 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
               transform: [{ rotate: '-90deg' }],
               justifyContent: 'center',
               alignItems: 'center',
+              flexDirection: 'row',
             }}
           >
-            <Text style={{ ...styles.text, ...{ textAlign: 'center' } }}>
-              {players?.[1]?.health}
-            </Text>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'red'}
+                onPress={() => updateLifeTotal(2, -1)}
+              >
+                -1
+              </CustomButton>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'red'}
+                onPress={() => updateLifeTotal(2, -5)}
+              >
+                -5
+              </CustomButton>
+            </View>
+            <View style={{}}>
+              <Text style={{ ...styles.text, ...{ textAlign: 'center' } }}>
+                {players?.[1]?.health}
+              </Text>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'black'}
+                onPress={() => updateLifeTotal(2, 1)}
+              >
+                +1
+              </CustomButton>
+            </View>
+            <View style={{ margin: 10 }}>
+              <CustomButton
+                color={'black'}
+                onPress={() => updateLifeTotal(2, 5)}
+              >
+                +5
+              </CustomButton>
+            </View>
           </View>
         </View>
       </View>
@@ -142,9 +177,30 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
           zIndex: -1,
           marginBottom: 15,
           borderRadius: 20,
+          flexDirection: 'row',
         }}
       >
+        <View style={{ margin: 10 }}>
+          <CustomButton color={'red'} onPress={() => updateLifeTotal(3, -5)}>
+            -5
+          </CustomButton>
+        </View>
+        <View style={{ margin: 10 }}>
+          <CustomButton color={'red'} onPress={() => updateLifeTotal(3, -1)}>
+            -1
+          </CustomButton>
+        </View>
         <Text style={styles.text}>{players?.[2]?.health}</Text>
+        <View style={{ margin: 10 }}>
+          <CustomButton color={'black'} onPress={() => updateLifeTotal(3, 1)}>
+            +1
+          </CustomButton>
+        </View>
+        <View style={{ margin: 10 }}>
+          <CustomButton color={'black'} onPress={() => updateLifeTotal(3, 5)}>
+            +5
+          </CustomButton>
+        </View>
       </View>
     </View>
   );
