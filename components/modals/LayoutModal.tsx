@@ -54,21 +54,34 @@ export const LayoutModal = (props: LayoutModalProps) => {
             </TouchableOpacity>
           </View>
         </View>
-        <View style={styles.content}>
+        <View
+          style={{
+            borderRadius: 5,
+            borderColor: 'grey',
+            borderWidth: 2,
+            width: 150,
+            height: 50,
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            padding: 5,
+            margin: 15,
+          }}
+        >
           <Text
             style={{
               fontSize: 22,
-              alignSelf: 'flex-start',
-              marginLeft: '12%',
+
               color: 'white',
             }}
           >
-            Choose a layout:
+            Select layout:
           </Text>
+        </View>
+        <View style={styles.content}>
           <View style={styles.btns}>
             <View style={{ width: 150, alignItems: 'center' }}>
               <CustomButton
-                color='black'
+                color='white'
                 onPress={() => handleSelect('columnar')}
               >
                 Columnar
@@ -76,8 +89,16 @@ export const LayoutModal = (props: LayoutModalProps) => {
             </View>
 
             <View />
+            <View
+              style={{
+                height: 300,
+                width: 0,
+                borderColor: 'white',
+                borderWidth: 1,
+              }}
+            ></View>
             <View style={{ width: 150, alignItems: 'center' }}>
-              <CustomButton color='black' onPress={() => handleSelect('grid')}>
+              <CustomButton color='white' onPress={() => handleSelect('grid')}>
                 Grid
               </CustomButton>
             </View>
@@ -99,9 +120,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'silver',
+    backgroundColor: 'black',
     borderRadius: 20,
     height: '50%',
+    borderWidth: 3,
+    borderColor: 'silver',
   },
   text: {
     color: 'white',
