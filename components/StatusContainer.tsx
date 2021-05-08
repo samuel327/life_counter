@@ -87,7 +87,12 @@ export const StatusContainer = (props: StatusContainerProps) => {
 };
 
 const styles = StyleSheet.create({
-  container: { height: 100, backgroundColor: 'silver', margin: 5 },
+  container: {
+    height: 100,
+    backgroundColor: 'silver',
+    margin: 5,
+    borderRadius: 20,
+  },
   topRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',

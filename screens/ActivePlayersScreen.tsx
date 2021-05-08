@@ -89,43 +89,40 @@ export default function ActivePlayersScreen() {
     });
   }
 
+  function LayoutBtns() {
+    return (
+      <View style={{ alignItems: 'center' }}>
+        <View style={styles.btns}>
+          <TouchableOpacity onPress={() => setModalVisible(true)}>
+            <Feather name='layout' size={24} color='white' />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => setPlayerNumModalVisible(true)}>
+            <Image
+              source={require('../assets/addUserIcon/icons8-add-user-male-30.png')}
+              style={{
+                backgroundColor: 'white',
+                borderRadius: 100,
+              }}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       {layout === 'columnar' && (
         <>
           <View style={styles.header}></View>
           <StatusBar style='auto' />
-          <View style={styles.btns}>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name='layout' size={24} color='black' />
-            </TouchableOpacity>
-            <TouchableOpacity
-              onPress={addPlayer}
-              disabled={players.length === 4 ? true : false}
-            >
-              <Ionicons
-                name='add'
-                size={24}
-                color={players.length === 4 ? 'grey' : 'black'}
-              />
-            </TouchableOpacity>
-          </View>
+          <LayoutBtns />
           <View style={styles.statusView}>{displayStatusContainers()}</View>
         </>
       )}
       {layout === 'grid' && (
         <View style={{ flex: 1 }}>
-          <View style={styles.btns}>
-            <TouchableOpacity onPress={() => setModalVisible(true)}>
-              <Feather name='layout' size={24} color='black' />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => setPlayerNumModalVisible(true)}>
-              <Image
-                source={require('../assets/addUserIcon/icons8-add-user-male-30.png')}
-              />
-            </TouchableOpacity>
-          </View>
-
+          <LayoutBtns />
           <PlayersGrid players={players} setPlayers={setPlayers} />
         </View>
       )}
@@ -144,7 +141,7 @@ export default function ActivePlayersScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1, backgroundColor: 'black' },
   header: {
     height: 100,
   },
@@ -152,10 +149,10 @@ const styles = StyleSheet.create({
     height: 500,
   },
   btns: {
-    marginLeft: 15,
     marginVertical: 3,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+    width: '90%',
   },
 });
