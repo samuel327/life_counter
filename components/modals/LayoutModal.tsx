@@ -98,7 +98,7 @@ export const LayoutModal = (props: LayoutModalProps) => {
                     color='black'
                     onPress={() => handleSelect('columnar')}
                   >
-                    Columns
+                    Stacked
                   </CustomButton>
                 </View>
               </View>

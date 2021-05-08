@@ -47,14 +47,12 @@ export default function ActivePlayersScreen() {
   function displayStatusContainers() {
     return players.map((player: Player, index: number) => {
       return (
-        <TouchableOpacity key={index}>
-          <StatusContainer
-            playerNumber={player?.player}
-            health={player?.health}
-            setPlayers={setPlayers}
-            sort={sort}
-          />
-        </TouchableOpacity>
+        <StatusContainer
+          playerNumber={player?.player}
+          health={player?.health}
+          setPlayers={setPlayers}
+          sort={sort}
+        />
       );
     });
   }
