@@ -52,6 +52,7 @@ export default function ActivePlayersScreen() {
           health={player?.health}
           setPlayers={setPlayers}
           sort={sort}
+          key={index}
         />
       );
     });
