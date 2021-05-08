@@ -79,29 +79,64 @@ export const LayoutModal = (props: LayoutModalProps) => {
         </View>
         <View style={styles.content}>
           <View style={styles.btns}>
-            <View style={{ width: 150, alignItems: 'center' }}>
-              <CustomButton
-                color='white'
-                onPress={() => handleSelect('columnar')}
+            <TouchableOpacity
+              style={{ overflow: 'hidden' }}
+              onPress={() => handleSelect('columnar')}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  backgroundColor: 'silver',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  overflow: 'hidden',
+                  borderTopLeftRadius: 3,
+                }}
               >
-                Columnar
-              </CustomButton>
-            </View>
+                <View style={{ width: 150, alignItems: 'center' }}>
+                  <CustomButton
+                    color='black'
+                    onPress={() => handleSelect('columnar')}
+                  >
+                    Columns
+                  </CustomButton>
+                </View>
+              </View>
+            </TouchableOpacity>
 
             <View />
             <View
               style={{
                 height: 300,
                 width: 0,
-                borderColor: 'white',
+                borderColor: 'black',
                 borderWidth: 1,
               }}
             ></View>
-            <View style={{ width: 150, alignItems: 'center' }}>
-              <CustomButton color='white' onPress={() => handleSelect('grid')}>
-                Grid
-              </CustomButton>
-            </View>
+            <TouchableOpacity
+              style={{ overflow: 'hidden' }}
+              onPress={() => handleSelect('grid')}
+            >
+              <View
+                style={{
+                  flex: 1,
+                  backgroundColor: 'silver',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  overflow: 'hidden',
+                  borderTopRightRadius: 3,
+                }}
+              >
+                <View style={{ width: 150, alignItems: 'center' }}>
+                  <CustomButton
+                    color='black'
+                    onPress={() => handleSelect('grid')}
+                  >
+                    Grid
+                  </CustomButton>
+                </View>
+              </View>
+            </TouchableOpacity>
           </View>
         </View>
       </View>
@@ -115,6 +150,7 @@ const styles = StyleSheet.create({
     //justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'black',
+    overflow: 'hidden',
   },
   btns: {
     flexDirection: 'row',
@@ -125,6 +161,7 @@ const styles = StyleSheet.create({
     height: '50%',
     borderWidth: 3,
     borderColor: 'silver',
+    overflow: 'hidden',
   },
   text: {
     color: 'white',
