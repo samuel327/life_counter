@@ -19,6 +19,8 @@ export const StatusContainer = (props: StatusContainerProps) => {
   const { playerNumber, health, setPlayers, sort } = props;
 
   const [colorModalVisible, setColorModalVisible] = useState<boolean>(false);
+  const colors = ['grey', 'white', 'blue', 'red', 'green', 'black', 'purple'];
+  const [selectedColor, setSelectedColor] = useState<string>();
 
   function updateLifeTotal(by: number) {
     setPlayers((prev: Player[]) => {
@@ -48,7 +50,12 @@ export const StatusContainer = (props: StatusContainerProps) => {
     return baseStyle;
   }
   return (
-    <View style={styles.container}>
+    <View
+      style={{
+        ...styles.container,
+        ...{ backgroundColor: selectedColor || 'silver' },
+      }}
+    >
       <View style={styles.topRow}>
         <View>
           <Text>{playerNumber}</Text>
@@ -90,6 +97,8 @@ export const StatusContainer = (props: StatusContainerProps) => {
         <ChooseColorModal
           visible={colorModalVisible}
           setVisible={() => setColorModalVisible(!colorModalVisible)}
+          colors={colors}
+          setColor={setSelectedColor}
         />
       )}
     </View>
@@ -99,7 +108,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
 const styles = StyleSheet.create({
   container: {
     height: 100,
-    backgroundColor: 'silver',
+
     margin: 5,
     borderRadius: 20,
   },
