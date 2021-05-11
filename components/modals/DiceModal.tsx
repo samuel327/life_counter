@@ -5,6 +5,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native';
 
 import React, { useState } from 'react';
@@ -24,7 +25,7 @@ export const DiceModal = (props: DiceModalProps) => {
           flex: 1,
           justifyContent: 'center',
           alignItems: 'center',
-          backgroundColor: 'black',
+          backgroundColor: 'grey',
         }}
       >
         <View
@@ -34,34 +35,58 @@ export const DiceModal = (props: DiceModalProps) => {
           }}
         >
           <Text style={{ color: 'grey', textAlign: 'center' }}></Text>
+
           <TouchableOpacity
             onPress={() => {
               setRolledNum(Math.floor(Math.random() * 20 + 1));
             }}
           >
-            <Text style={{ color: 'white', fontSize: 70, textAlign: 'center' }}>
-              D20
-            </Text>
-          </TouchableOpacity>
-          <Text style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>
-            {rolledNum}
-          </Text>
-          <TouchableOpacity onPress={() => setDiceModalVisible(false)}>
             <View
               style={{
-                width: 200,
-                //borderColor: 'grey',
-                borderWidth: 6,
-                borderRadius: 5,
-                alignItems: 'center',
-                height: 50,
                 justifyContent: 'center',
-                borderColor: 'rgba(158, 150, 150, .5)',
+                alignItems: 'center',
               }}
             >
-              <Text style={{ color: 'white', fontSize: 22 }}>Close</Text>
+              <Image
+                source={require('../../assets/dice_images/skuff_d20.png')}
+              />
             </View>
           </TouchableOpacity>
+          <View>
+            <Text style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>
+              {rolledNum}
+            </Text>
+          </View>
+
+          <View
+            style={{
+              flex: 1,
+              justifyContent: 'center',
+              alignItems: 'center',
+              marginTop: 100,
+            }}
+          >
+            <TouchableOpacity onPress={() => setDiceModalVisible(false)}>
+              <View
+                style={{
+                  width: 200,
+                  //borderColor: 'grey',
+                  borderWidth: 6,
+                  borderRadius: 5,
+                  alignItems: 'center',
+                  height: 50,
+                  justifyContent: 'center',
+                  borderColor: 'rgba(158, 150, 150, .5)',
+                }}
+              >
+                <Text
+                  style={{ color: 'white', fontSize: 22, textAlign: 'center' }}
+                >
+                  Close
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </Modal>
