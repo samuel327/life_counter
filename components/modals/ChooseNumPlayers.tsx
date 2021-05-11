@@ -1,21 +1,15 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  Touchable,
-  TouchableOpacity,
-} from 'react-native';
+import { Modal, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Player } from '../../screens/ActivePlayersScreen';
 
 interface ChooseNumPlayersProps {
   visible: boolean;
   onClose: Function;
+  playerCount: number;
   setPlayers: Dispatch<SetStateAction<Player[]>>;
 }
 export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
-  const { visible, onClose, setPlayers } = props;
+  const { playerCount, visible, onClose, setPlayers } = props;
   return (
     <Modal visible={visible} style={{ backgroundColor: 'black' }}>
       <View
@@ -43,7 +37,16 @@ export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
                 onClose();
               }}
             >
-              <View style={styles.view}>
+              <View
+                style={
+                  playerCount === 2
+                    ? {
+                        ...styles.view,
+                        ...styles.chosenPlayerCount,
+                      }
+                    : styles.view
+                }
+              >
                 <Text style={styles.text}>2</Text>
               </View>
             </TouchableOpacity>
@@ -58,7 +61,13 @@ export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
                 onClose();
               }}
             >
-              <View style={styles.view}>
+              <View
+                style={
+                  playerCount === 3
+                    ? { ...styles.view, ...styles.chosenPlayerCount }
+                    : styles.view
+                }
+              >
                 <Text style={styles.text}>3</Text>
               </View>
             </TouchableOpacity>
@@ -73,7 +82,13 @@ export const ChooseNumPlayers = (props: ChooseNumPlayersProps) => {
                 onClose();
               }}
             >
-              <View style={styles.view}>
+              <View
+                style={
+                  playerCount === 4
+                    ? { ...styles.view, ...styles.chosenPlayerCount }
+                    : styles.view
+                }
+              >
                 <Text style={styles.text}>4</Text>
               </View>
             </TouchableOpacity>
@@ -123,5 +138,9 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 30,
+  },
+  chosenPlayerCount: {
+    backgroundColor: 'rgba(255,215,0,0.6)',
+    borderColor: 'rgba(158, 150, 150, 1)',
   },
 });
