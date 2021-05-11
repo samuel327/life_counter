@@ -7,6 +7,7 @@ import { AppColors } from '../constants/AppColors';
 import { CustomButton } from './CustomButton';
 import { Ionicons } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
+import { ChooseColorModal } from './modals/ChooseColorModal';
 
 interface StatusContainerProps {
   playerNumber: number;
@@ -16,6 +17,8 @@ interface StatusContainerProps {
 }
 export const StatusContainer = (props: StatusContainerProps) => {
   const { playerNumber, health, setPlayers, sort } = props;
+
+  const [colorModalVisible, setColorModalVisible] = useState<boolean>(false);
 
   function updateLifeTotal(by: number) {
     setPlayers((prev: Player[]) => {
@@ -53,6 +56,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
         <TouchableOpacity
           onPress={() => {
             console.log('Pressed!');
+            setColorModalVisible(true);
           }}
         >
           <Ionicons name='settings' size={20} color='grey' />
@@ -82,6 +86,12 @@ export const StatusContainer = (props: StatusContainerProps) => {
           +5
         </CustomButton>
       </View>
+      {colorModalVisible && (
+        <ChooseColorModal
+          visible={colorModalVisible}
+          setVisible={() => setColorModalVisible(!colorModalVisible)}
+        />
+      )}
     </View>
   );
 };

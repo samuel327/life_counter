@@ -31,9 +31,9 @@ export default function ActivePlayersScreen() {
     { player: 4, health: 40 },
   ]);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
-  const [playerNumModalVisible, setPlayerNumModalVisible] = useState<boolean>(
-    false
-  );
+
+  const [playerNumModalVisible, setPlayerNumModalVisible] =
+    useState<boolean>(false);
 
   const [layout, setLayout] = useState<string>('columnar');
 

@@ -34,39 +34,63 @@ export const DiceModal = (props: DiceModalProps) => {
             justifyContent: 'space-between',
           }}
         >
-          <Text style={{ color: 'grey', textAlign: 'center' }}></Text>
-
-          <TouchableOpacity
-            onPress={() => {
-              setRolledNum(Math.floor(Math.random() * 20 + 1));
-            }}
-          >
+          {!rolledNum && (
             <View
               style={{
                 justifyContent: 'center',
                 alignItems: 'center',
               }}
             >
-              <Image
-                source={require('../../assets/dice_images/skuff_d20.png')}
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  setRolledNum(Math.floor(Math.random() * 20 + 1));
+                  setTimeout(() => {
+                    setRolledNum(undefined);
+                  }, 1000);
+                }}
+              >
+                <View
+                  style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}
+                >
+                  <Image
+                    source={require('../../assets/dice_images/skuff_d20.png')}
+                  />
+                </View>
+              </TouchableOpacity>
             </View>
-          </TouchableOpacity>
-          <View>
-            <Text style={{ color: 'white', fontSize: 50, textAlign: 'center' }}>
-              {rolledNum}
-            </Text>
-          </View>
-
-          <View
-            style={{
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-              marginTop: 100,
-            }}
-          >
-            <TouchableOpacity onPress={() => setDiceModalVisible(false)}>
+          )}
+          {rolledNum && (
+            <View
+              style={{
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 90,
+                height: 210,
+              }}
+            >
+              <Text
+                style={{
+                  color: 'white',
+                  fontSize: 50,
+                  textAlign: 'center',
+                }}
+              >
+                {rolledNum}
+              </Text>
+            </View>
+          )}
+          <TouchableOpacity onPress={() => setDiceModalVisible(false)}>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginTop: 100,
+              }}
+            >
               <View
                 style={{
                   width: 200,
@@ -76,7 +100,7 @@ export const DiceModal = (props: DiceModalProps) => {
                   alignItems: 'center',
                   height: 50,
                   justifyContent: 'center',
-                  borderColor: 'rgba(158, 150, 150, .5)',
+                  borderColor: 'rgba(1, 150, 150, .9)',
                 }}
               >
                 <Text
@@ -85,8 +109,8 @@ export const DiceModal = (props: DiceModalProps) => {
                   Close
                 </Text>
               </View>
-            </TouchableOpacity>
-          </View>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </Modal>
