@@ -4,7 +4,7 @@
     "slug": "life_counter",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/potion_icon.png",
+    "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/potion_icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.rollup27.life_counter"

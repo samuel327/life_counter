@@ -35,7 +35,7 @@ export default function ActivePlayersScreen() {
   const [playerNumModalVisible, setPlayerNumModalVisible] =
     useState<boolean>(false);
 
-  const [layout, setLayout] = useState<string>('columnar');
+  const [layout, setLayout] = useState<string>('grid');
 
   function sort() {
     setPlayers((prev: Player[]) => {
