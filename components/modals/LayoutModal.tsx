@@ -1,8 +1,9 @@
 import { Modal, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { CustomButton } from '../CustomButton';
-import React from 'react';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import React from 'react';
+
 interface LayoutModalProps {
   visible: boolean;
   onClose: any;
@@ -49,7 +50,7 @@ export const LayoutModal = (props: LayoutModalProps) => {
                   alignItems: 'center',
                 }}
               >
-                <MaterialCommunityIcons name='close' size={50} color='red' />
+                <MaterialCommunityIcons name="close" size={50} color="red" />
               </View>
             </TouchableOpacity>
           </View>
@@ -94,12 +95,7 @@ export const LayoutModal = (props: LayoutModalProps) => {
                 }}
               >
                 <View style={{ width: 150, alignItems: 'center' }}>
-                  <CustomButton
-                    color='black'
-                    onPress={() => handleSelect('columnar')}
-                  >
-                    Stacked
-                  </CustomButton>
+                  <Text style={{ fontSize: 22 }}>Stacked</Text>
                 </View>
               </View>
             </TouchableOpacity>
@@ -129,7 +125,7 @@ export const LayoutModal = (props: LayoutModalProps) => {
               >
                 <View style={{ width: 150, alignItems: 'center' }}>
                   <CustomButton
-                    color='black'
+                    color="black"
                     onPress={() => handleSelect('grid')}
                   >
                     Grid

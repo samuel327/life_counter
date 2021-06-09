@@ -4,10 +4,10 @@ import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
 
 import { AppColors } from '../constants/AppColors';
+import { ChooseColorModal } from './modals/ChooseColorModal';
 import { CustomButton } from './CustomButton';
 import { Ionicons } from '@expo/vector-icons';
 import { Player } from '../screens/ActivePlayersScreen';
-import { ChooseColorModal } from './modals/ChooseColorModal';
 
 interface StatusContainerProps {
   playerNumber: number;
@@ -66,7 +66,7 @@ export const StatusContainer = (props: StatusContainerProps) => {
             setColorModalVisible(true);
           }}
         >
-          <Ionicons name='settings' size={20} color='grey' />
+          <Ionicons name="settings" size={20} color="grey" />
         </TouchableOpacity>
       </View>
       <View
@@ -76,20 +76,26 @@ export const StatusContainer = (props: StatusContainerProps) => {
           alignItems: 'center',
         }}
       >
-        <CustomButton onPress={() => updateLifeTotal(-1)} color='red'>
+        <CustomButton
+          onPress={() => updateLifeTotal(-1)}
+          color={selectedColor === 'red' ? 'white' : 'red'}
+        >
           -1
         </CustomButton>
 
-        <CustomButton onPress={() => updateLifeTotal(-5)} color='red'>
+        <CustomButton
+          onPress={() => updateLifeTotal(-5)}
+          color={selectedColor === 'red' ? 'white' : 'red'}
+        >
           -5
         </CustomButton>
         <Text style={getLifeTotalStyles()}>{health}</Text>
 
-        <CustomButton onPress={() => updateLifeTotal(1)} color='black'>
+        <CustomButton onPress={() => updateLifeTotal(1)} color="black">
           +1
         </CustomButton>
 
-        <CustomButton onPress={() => updateLifeTotal(5)} color='black'>
+        <CustomButton onPress={() => updateLifeTotal(5)} color="black">
           +5
         </CustomButton>
       </View>
