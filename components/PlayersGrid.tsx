@@ -4,9 +4,11 @@ import React, { useState } from 'react';
 import { CustomButton } from './CustomButton';
 import { DiceModal } from './modals/DiceModal';
 import { Foundation } from '@expo/vector-icons';
+import { FourPlayer } from './layouts/FourPlayer';
 import { Player } from '../screens/ActivePlayersScreen';
-import { TwoPlayer } from '../components/layouts/TwoPlayer';
 import { ThreePlayer } from './layouts/ThreePlayer';
+import { TwoPlayer } from '../components/layouts/TwoPlayer';
+
 interface PlayersGrid {
   players: Player[];
   setPlayers: React.Dispatch<React.SetStateAction<Player[]>>;
@@ -30,247 +32,15 @@ export const PlayersGrid = (props: PlayersGrid) => {
     });
   }
 
-  function fourPlayerFormat() {
-    return (
-      <View style={styles.board}>
-        <View style={styles.half}>
-          <View
-            style={{ ...styles.playerSpaceTop, ...{ backgroundColor: 'blue' } }}
-          >
-            <View
-              style={{
-                transform: [{ rotate: '90deg' }],
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ margin: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(1, -1)}
-                >
-                  -1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(1, -5)}
-                >
-                  -5
-                </CustomButton>
-              </View>
-
-              <Text
-                style={{
-                  ...styles.text,
-                  ...{},
-                }}
-              >
-                {players?.[0]?.health}
-              </Text>
-
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'black'}
-                  onPress={() => updateLifeTotal(1, 1)}
-                >
-                  +1
-                </CustomButton>
-              </View>
-
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'black'}
-                  onPress={() => updateLifeTotal(1, 5)}
-                >
-                  +5
-                </CustomButton>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              ...styles.playerSpaceTop,
-              ...{ backgroundColor: 'white' },
-            }}
-          >
-            <View
-              style={{
-                transform: [{ rotate: '-90deg' }],
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ margin: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(2, -1)}
-                >
-                  -1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(2, -5)}
-                >
-                  -5
-                </CustomButton>
-              </View>
-              <Text
-                style={{
-                  ...styles.text,
-                  ...{},
-                }}
-              >
-                {players?.[1]?.health}
-              </Text>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(2, 1)}
-              >
-                +1
-              </CustomButton>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'black'}
-                  onPress={() => updateLifeTotal(2, 5)}
-                >
-                  +5
-                </CustomButton>
-              </View>
-            </View>
-          </View>
-        </View>
-        <View style={styles.middleOptionsView}>
-          <TouchableOpacity
-            onPress={() => {
-              setDiceModalVisible(true);
-            }}
-          >
-            <Foundation name='die-four' size={70} color='silver' />
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.half}>
-          <View
-            style={{
-              ...styles.playerSpaceBottom,
-              ...{ backgroundColor: 'green' },
-            }}
-          >
-            <View
-              style={{
-                transform: [{ rotate: '90deg' }],
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(3, -1)}
-                >
-                  -1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'red'}
-                  onPress={() => updateLifeTotal(3, -5)}
-                >
-                  -5
-                </CustomButton>
-              </View>
-              <Text
-                style={{
-                  ...styles.text,
-                  ...{},
-                }}
-              >
-                {players?.[2]?.health}
-              </Text>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'black'}
-                  onPress={() => updateLifeTotal(3, 1)}
-                >
-                  +1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'black'}
-                  onPress={() => updateLifeTotal(3, 5)}
-                >
-                  +5
-                </CustomButton>
-              </View>
-            </View>
-          </View>
-          <View
-            style={{
-              ...styles.playerSpaceBottom,
-              ...{ backgroundColor: 'red' },
-            }}
-          >
-            <View
-              style={{
-                transform: [{ rotate: '-90deg' }],
-                flexDirection: 'row',
-                alignItems: 'center',
-              }}
-            >
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'white'}
-                  onPress={() => updateLifeTotal(4, -1)}
-                >
-                  -1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'white'}
-                  onPress={() => updateLifeTotal(4, -5)}
-                >
-                  -5
-                </CustomButton>
-              </View>
-              <Text
-                style={{
-                  ...styles.text,
-                  ...{},
-                }}
-              >
-                {players?.[3]?.health}
-              </Text>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'white'}
-                  onPress={() => updateLifeTotal(4, 1)}
-                >
-                  +1
-                </CustomButton>
-              </View>
-              <View style={{ marginHorizontal: 10 }}>
-                <CustomButton
-                  color={'white'}
-                  onPress={() => updateLifeTotal(4, 5)}
-                >
-                  +5
-                </CustomButton>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-    );
-  }
   return (
     <View style={styles.content}>
-      {players.length === 4 && fourPlayerFormat()}
+      {players.length === 4 && (
+        <FourPlayer
+          players={players}
+          setPlayers={setPlayers}
+          showDice={setDiceModalVisible}
+        />
+      )}
       {players.length === 3 && (
         <ThreePlayer
           players={players}

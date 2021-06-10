@@ -1,8 +1,9 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Player } from '../../screens/ActivePlayersScreen';
-import { Foundation } from '@expo/vector-icons';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
 import { CustomButton } from '../CustomButton';
+import { Foundation } from '@expo/vector-icons';
+import { Player } from '../../screens/ActivePlayersScreen';
+import React from 'react';
 interface ThreePlayerProps {
   players: Player[];
   setPlayers: Function;
@@ -161,7 +162,7 @@ export const ThreePlayer = (props: ThreePlayerProps) => {
               showDice(true);
             }}
           >
-            <Foundation name='die-four' size={70} color='silver' />
+            <Foundation name="die-four" size={70} color="silver" />
           </TouchableOpacity>
         </View>
       </View>
