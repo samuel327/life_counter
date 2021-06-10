@@ -2,9 +2,9 @@
   "expo": {
     "name": "life_counter",
     "slug": "life_counter",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/potion_icon_ios.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
@@ -20,7 +20,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/icon.png",
+        "foregroundImage": "./assets/potion_icon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.rollup27.life_counter"
