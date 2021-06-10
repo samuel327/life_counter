@@ -35,7 +35,6 @@ export const PlayersGrid = (props: PlayersGrid) => {
       {players.length === 4 && (
         <FourPlayer
           players={players}
-          setPlayers={setPlayers}
           showDice={setDiceModalVisible}
           updateLifeTotal={updateLifeTotal}
         />
@@ -43,7 +42,6 @@ export const PlayersGrid = (props: PlayersGrid) => {
       {players.length === 3 && (
         <ThreePlayer
           players={players}
-          setPlayers={setPlayers}
           showDice={setDiceModalVisible}
           updateLifeTotal={updateLifeTotal}
         />
@@ -51,7 +49,6 @@ export const PlayersGrid = (props: PlayersGrid) => {
       {players.length === 2 && (
         <TwoPlayer
           players={players}
-          setPlayers={setPlayers}
           showDice={setDiceModalVisible}
           updateLifeTotal={updateLifeTotal}
         />

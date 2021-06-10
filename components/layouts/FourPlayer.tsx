@@ -7,12 +7,11 @@ import React from 'react';
 
 interface FourPlayerGridProps {
   players: any;
-  setPlayers: any;
   showDice: any;
   updateLifeTotal: Function;
 }
 export const FourPlayer = (props: FourPlayerGridProps) => {
-  const { players, setPlayers, showDice, updateLifeTotal } = props;
+  const { players, showDice, updateLifeTotal } = props;
 
   return (
     <View style={styles.board}>

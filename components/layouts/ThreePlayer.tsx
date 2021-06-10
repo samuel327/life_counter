@@ -7,12 +7,12 @@ import React from 'react';
 
 interface ThreePlayerProps {
   players: Player[];
-  setPlayers: Function;
+
   showDice: Function;
   updateLifeTotal: Function;
 }
 export const ThreePlayer = (props: ThreePlayerProps) => {
-  const { players, setPlayers, showDice, updateLifeTotal } = props;
+  const { players, showDice, updateLifeTotal } = props;
 
   return (
     <View style={styles.board}>

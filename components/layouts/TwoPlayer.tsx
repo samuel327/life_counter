@@ -7,12 +7,11 @@ import { Player } from '../../screens/ActivePlayersScreen';
 
 interface TwoPlayerProps {
   players: Player[];
-  setPlayers: Dispatch<SetStateAction<Player[]>>;
   showDice: Dispatch<SetStateAction<boolean>>;
   updateLifeTotal: Function;
 }
 export const TwoPlayer = (props: TwoPlayerProps) => {
-  const { players, setPlayers, showDice, updateLifeTotal } = props;
+  const { players, showDice, updateLifeTotal } = props;
 
   return (
     <View style={styles.board}>
