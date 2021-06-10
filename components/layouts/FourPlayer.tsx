@@ -9,23 +9,10 @@ interface FourPlayerGridProps {
   players: any;
   setPlayers: any;
   showDice: any;
+  updateLifeTotal: Function;
 }
 export const FourPlayer = (props: FourPlayerGridProps) => {
-  const { players, setPlayers, showDice } = props;
-
-  function updateLifeTotal(playerNumber: number, by: number) {
-    setPlayers((prev: Player[]) => {
-      let cpy = [...prev];
-
-      cpy = cpy.map((player: Player, index: number) => {
-        if (player.player === playerNumber) {
-          player.health = player.health + by;
-        }
-        return player;
-      });
-      return cpy;
-    });
-  }
+  const { players, setPlayers, showDice, updateLifeTotal } = props;
 
   return (
     <View style={styles.board}>

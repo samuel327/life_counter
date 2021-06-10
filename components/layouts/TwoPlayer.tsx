@@ -1,30 +1,19 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+import { CustomButton } from '../CustomButton';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../../screens/ActivePlayersScreen';
-import { CustomButton } from '../CustomButton';
 
 interface TwoPlayerProps {
   players: Player[];
   setPlayers: Dispatch<SetStateAction<Player[]>>;
   showDice: Dispatch<SetStateAction<boolean>>;
+  updateLifeTotal: Function;
 }
 export const TwoPlayer = (props: TwoPlayerProps) => {
-  const { players, setPlayers, showDice } = props;
+  const { players, setPlayers, showDice, updateLifeTotal } = props;
 
-  function updateLifeTotal(playerNumber: number, by: number) {
-    setPlayers((prev: Player[]) => {
-      let cpy = [...prev];
-
-      cpy = cpy.map((player: Player, index: number) => {
-        if (player.player === playerNumber) {
-          player.health = player.health + by;
-        }
-        return player;
-      });
-      return cpy;
-    });
-  }
   return (
     <View style={styles.board}>
       <View
@@ -71,7 +60,7 @@ export const TwoPlayer = (props: TwoPlayerProps) => {
               showDice(true);
             }}
           >
-            <Foundation name='die-four' size={70} color='silver' />
+            <Foundation name="die-four" size={70} color="silver" />
           </TouchableOpacity>
         </View>
       </View>

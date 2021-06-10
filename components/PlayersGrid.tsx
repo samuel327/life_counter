@@ -1,9 +1,7 @@
-import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import React, { useState } from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
-import { CustomButton } from './CustomButton';
 import { DiceModal } from './modals/DiceModal';
-import { Foundation } from '@expo/vector-icons';
 import { FourPlayer } from './layouts/FourPlayer';
 import { Player } from '../screens/ActivePlayersScreen';
 import { ThreePlayer } from './layouts/ThreePlayer';
@@ -39,6 +37,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
           players={players}
           setPlayers={setPlayers}
           showDice={setDiceModalVisible}
+          updateLifeTotal={updateLifeTotal}
         />
       )}
       {players.length === 3 && (
@@ -46,6 +45,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
           players={players}
           setPlayers={setPlayers}
           showDice={setDiceModalVisible}
+          updateLifeTotal={updateLifeTotal}
         />
       )}
       {players.length === 2 && (
@@ -53,6 +53,7 @@ export const PlayersGrid = (props: PlayersGrid) => {
           players={players}
           setPlayers={setPlayers}
           showDice={setDiceModalVisible}
+          updateLifeTotal={updateLifeTotal}
         />
       )}
       {players.length !== 4 && players.length !== 2 && players.length !== 3 && (

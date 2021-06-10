@@ -4,27 +4,16 @@ import { CustomButton } from '../CustomButton';
 import { Foundation } from '@expo/vector-icons';
 import { Player } from '../../screens/ActivePlayersScreen';
 import React from 'react';
+
 interface ThreePlayerProps {
   players: Player[];
   setPlayers: Function;
   showDice: Function;
+  updateLifeTotal: Function;
 }
 export const ThreePlayer = (props: ThreePlayerProps) => {
-  const { players, setPlayers, showDice } = props;
+  const { players, setPlayers, showDice, updateLifeTotal } = props;
 
-  function updateLifeTotal(playerNumber: number, by: number) {
-    setPlayers((prev: Player[]) => {
-      let cpy = [...prev];
-
-      cpy = cpy.map((player: Player, index: number) => {
-        if (player.player === playerNumber) {
-          player.health = player.health + by;
-        }
-        return player;
-      });
-      return cpy;
-    });
-  }
   return (
     <View style={styles.board}>
       <View
