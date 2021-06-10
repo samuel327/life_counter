@@ -2,7 +2,7 @@
   "expo": {
     "name": "life_counter",
     "slug": "life_counter",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -16,7 +16,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "test"
+      "bundleIdentifier": "test.MTGLifeCounter.com"
     },
     "android": {
       "adaptiveIcon": {
