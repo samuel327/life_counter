@@ -1,9 +1,10 @@
+import React, { useState } from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
+import { ChooseColorModal } from '../modals/ChooseColorModal';
 import { Foundation } from '@expo/vector-icons';
 import { LifeButtons } from './LifeButtons';
 import { Player } from '../../screens/ActivePlayersScreen';
-import React from 'react';
 
 interface FourPlayerGridProps {
   players: Player[];
@@ -13,11 +14,27 @@ interface FourPlayerGridProps {
 export const FourPlayer = (props: FourPlayerGridProps) => {
   const { players, showDice, updateLifeTotal } = props;
 
+  const [colorPickerOpen, setShowColorPicker] = useState<any>();
+
+  if (colorPickerOpen) {
+    return (
+      <ChooseColorModal
+        visible={colorPickerOpen}
+        setVisible={() => {
+          setShowColorPicker(false);
+        }}
+        setColor={() => {}}
+        colors={['red', 'blue', 'green', 'purple', 'pink', 'maroon']}
+      />
+    );
+  }
+
   return (
     <View style={styles.board}>
       <View style={styles.half}>
-        <View
+        <TouchableOpacity
           style={{ ...styles.playerSpaceTop, ...{ backgroundColor: 'pink' } }}
+          onLongPress={() => setShowColorPicker(true)}
         >
           <View style={styles.topLeft}>
             <LifeButtons
@@ -26,12 +43,13 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
               playerNumber={players[0].player}
             />
           </View>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             ...styles.playerSpaceTop,
             ...{ backgroundColor: 'white' },
           }}
+          onLongPress={() => setShowColorPicker(true)}
         >
           <View style={styles.topRight}>
             <LifeButtons
@@ -40,7 +58,7 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
               playerNumber={players[1].player}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
       <View style={styles.middleOptionsView}>
         <TouchableOpacity
@@ -53,11 +71,12 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
       </View>
 
       <View style={styles.half}>
-        <View
+        <TouchableOpacity
           style={{
             ...styles.playerSpaceBottom,
             ...{ backgroundColor: 'green' },
           }}
+          onLongPress={() => setShowColorPicker(true)}
         >
           <View style={styles.bottomLeft}>
             <LifeButtons
@@ -66,12 +85,13 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
               playerNumber={players[2].player}
             />
           </View>
-        </View>
-        <View
+        </TouchableOpacity>
+        <TouchableOpacity
           style={{
             ...styles.playerSpaceBottom,
             ...{ backgroundColor: 'red' },
           }}
+          onLongPress={() => setShowColorPicker(true)}
         >
           <View style={styles.bottomRight}>
             <LifeButtons
@@ -80,7 +100,7 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
               playerNumber={players[3].player}
             />
           </View>
-        </View>
+        </TouchableOpacity>
       </View>
     </View>
   );
