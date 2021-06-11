@@ -1,12 +1,12 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { CustomButton } from '../CustomButton';
 import { Foundation } from '@expo/vector-icons';
+import { LifeButtons } from './LifeButtons';
 import { Player } from '../../screens/ActivePlayersScreen';
 import React from 'react';
 
 interface FourPlayerGridProps {
-  players: any;
+  players: Player[];
   showDice: any;
   updateLifeTotal: Function;
 }
@@ -17,58 +17,14 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
     <View style={styles.board}>
       <View style={styles.half}>
         <View
-          style={{ ...styles.playerSpaceTop, ...{ backgroundColor: 'blue' } }}
+          style={{ ...styles.playerSpaceTop, ...{ backgroundColor: 'pink' } }}
         >
-          <View
-            style={{
-              transform: [{ rotate: '90deg' }],
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <View style={{ margin: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(1, -1)}
-              >
-                -1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(1, -5)}
-              >
-                -5
-              </CustomButton>
-            </View>
-
-            <Text
-              style={{
-                ...styles.text,
-                ...{},
-              }}
-            >
-              {players?.[0]?.health}
-            </Text>
-
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(1, 1)}
-              >
-                +1
-              </CustomButton>
-            </View>
-
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(1, 5)}
-              >
-                +5
-              </CustomButton>
-            </View>
+          <View style={styles.topLeft}>
+            <LifeButtons
+              health={players[0].health}
+              updateLifeTotal={updateLifeTotal}
+              playerNumber={players[0].player}
+            />
           </View>
         </View>
         <View
@@ -77,48 +33,12 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
             ...{ backgroundColor: 'white' },
           }}
         >
-          <View
-            style={{
-              transform: [{ rotate: '-90deg' }],
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <View style={{ margin: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(2, -1)}
-              >
-                -1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(2, -5)}
-              >
-                -5
-              </CustomButton>
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                ...{},
-              }}
-            >
-              {players?.[1]?.health}
-            </Text>
-            <CustomButton color={'black'} onPress={() => updateLifeTotal(2, 1)}>
-              +1
-            </CustomButton>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(2, 5)}
-              >
-                +5
-              </CustomButton>
-            </View>
+          <View style={styles.topRight}>
+            <LifeButtons
+              health={players[1].health}
+              updateLifeTotal={updateLifeTotal}
+              playerNumber={players[1].player}
+            />
           </View>
         </View>
       </View>
@@ -139,53 +59,12 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
             ...{ backgroundColor: 'green' },
           }}
         >
-          <View
-            style={{
-              transform: [{ rotate: '90deg' }],
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(3, -1)}
-              >
-                -1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'red'}
-                onPress={() => updateLifeTotal(3, -5)}
-              >
-                -5
-              </CustomButton>
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                ...{},
-              }}
-            >
-              {players?.[2]?.health}
-            </Text>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(3, 1)}
-              >
-                +1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'black'}
-                onPress={() => updateLifeTotal(3, 5)}
-              >
-                +5
-              </CustomButton>
-            </View>
+          <View style={styles.bottomLeft}>
+            <LifeButtons
+              health={players[2].health}
+              updateLifeTotal={updateLifeTotal}
+              playerNumber={players[2].player}
+            />
           </View>
         </View>
         <View
@@ -194,53 +73,12 @@ export const FourPlayer = (props: FourPlayerGridProps) => {
             ...{ backgroundColor: 'red' },
           }}
         >
-          <View
-            style={{
-              transform: [{ rotate: '-90deg' }],
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'white'}
-                onPress={() => updateLifeTotal(4, -1)}
-              >
-                -1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'white'}
-                onPress={() => updateLifeTotal(4, -5)}
-              >
-                -5
-              </CustomButton>
-            </View>
-            <Text
-              style={{
-                ...styles.text,
-                ...{},
-              }}
-            >
-              {players?.[3]?.health}
-            </Text>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'white'}
-                onPress={() => updateLifeTotal(4, 1)}
-              >
-                +1
-              </CustomButton>
-            </View>
-            <View style={{ marginHorizontal: 10 }}>
-              <CustomButton
-                color={'white'}
-                onPress={() => updateLifeTotal(4, 5)}
-              >
-                +5
-              </CustomButton>
-            </View>
+          <View style={styles.bottomRight}>
+            <LifeButtons
+              health={players[3].health}
+              updateLifeTotal={updateLifeTotal}
+              playerNumber={players[3].player}
+            />
           </View>
         </View>
       </View>
@@ -266,13 +104,14 @@ const styles = StyleSheet.create({
   half: { flex: 1, flexDirection: 'row' },
   playerSpaceTop: {
     flex: 1,
-
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20,
     marginTop: 15,
     marginHorizontal: 5,
     marginBottom: -35,
+    width: '100%',
+    padding: 2,
   },
 
   playerSpaceBottom: {
@@ -296,5 +135,33 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     width: 80,
+  },
+  topLeft: {
+    transform: [{ rotate: '90deg' }],
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '180%',
+  },
+  topRight: {
+    transform: [{ rotate: '-90deg' }],
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '180%',
+  },
+  bottomLeft: {
+    transform: [{ rotate: '90deg' }],
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '180%',
+  },
+  bottomRight: {
+    transform: [{ rotate: '-90deg' }],
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '180%',
   },
 });

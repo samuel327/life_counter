@@ -1,34 +1,32 @@
 import * as _ from 'lodash';
 
 import {
-  Button,
+  Image,
   SafeAreaView,
   StyleSheet,
-  Text,
   TouchableOpacity,
   View,
-  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 
+import { ChooseNumPlayers } from '../components/modals/ChooseNumPlayers';
 import { Feather } from '@expo/vector-icons';
-import { Ionicons } from '@expo/vector-icons';
 import { LayoutModal } from '../components/modals/LayoutModal';
 import { PlayersGrid } from '../components/PlayersGrid';
 import { StatusBar } from 'expo-status-bar';
 import { StatusContainer } from '../components/StatusContainer';
-import { ChooseNumPlayers } from '../components/modals/ChooseNumPlayers';
 
 export interface Player {
   player: number;
   health: number;
+  mapPlacement: string;
 }
 export default function ActivePlayersScreen() {
   const [players, setPlayers] = useState<Player[]>([
-    { player: 1, health: 40 },
-    { player: 2, health: 40 },
-    { player: 3, health: 40 },
-    { player: 4, health: 40 },
+    { player: 1, health: 40, mapPlacement: 'topLeft' },
+    { player: 2, health: 40, mapPlacement: 'topRight' },
+    { player: 3, health: 40, mapPlacement: 'bottomLeft' },
+    { player: 4, health: 40, mapPlacement: 'bottomRight' },
   ]);
   const [modalVisible, setModalVisible] = useState<boolean>(false);
 
@@ -81,6 +79,7 @@ export default function ActivePlayersScreen() {
         let updatedPlayer: Player = {
           player: index + 1,
           health: player.health,
+          mapPlacement: player.mapPlacement,
         };
         return updatedPlayer;
       });
@@ -93,7 +92,7 @@ export default function ActivePlayersScreen() {
       <View style={{ alignItems: 'center' }}>
         <View style={styles.btns}>
           <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <Feather name='layout' size={24} color='white' />
+            <Feather name="layout" size={24} color="white" />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => setPlayerNumModalVisible(true)}>
             <Image
@@ -114,7 +113,7 @@ export default function ActivePlayersScreen() {
       {layout === 'columnar' && (
         <>
           <View style={styles.header}></View>
-          <StatusBar style='auto' />
+          <StatusBar style="auto" />
           <LayoutBtns />
           <View style={styles.statusView}>{displayStatusContainers()}</View>
         </>

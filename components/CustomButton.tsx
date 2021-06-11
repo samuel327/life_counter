@@ -24,10 +24,11 @@ export const CustomButton = (props: CustomButtonProps) => {
 const styles = StyleSheet.create({
   textView: {
     width: 50,
-
+    backgroundColor: 'grey',
     marginHorizontal: 2,
     justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 30,
   },
   text: {
     fontSize: 22,
